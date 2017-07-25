@@ -1,4 +1,4 @@
-package cn.segema.cloud.system.domain;
+package cn.segema.cloud.elasticsearch.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,9 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "SYS_USER")
+@Table(name = "SYS_ELASTICSEARCH")
 @Entity
-public class User {
+public class Elasticsearch {
 	@Id
 	@Column(name = "USERID")
 	@GeneratedValue(strategy=GenerationType.AUTO)

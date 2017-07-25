@@ -3,18 +3,11 @@ package cn.segema.cloud.system.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import cn.segema.cloud.contract.domain.Contract;
 import cn.segema.cloud.system.web.domain.User;
 import cn.segema.cloud.system.web.service.WebUserService;
 
@@ -44,7 +37,7 @@ public class WebUserController {
   	  } return null; 
   	}
     
-    @GetMapping("/listByPageable")
+/*    @GetMapping("/listByPageable")
 	public Page<User> listByPageable(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "5") Integer size) {
 
@@ -52,6 +45,6 @@ public class WebUserController {
 		Pageable pageable = new PageRequest(page, size, sort);
 		webUserService.listByPageable(pageNum,pageSize);
 		return contractRepository.findAll(pageable);
-	}
+	}*/
     
 }

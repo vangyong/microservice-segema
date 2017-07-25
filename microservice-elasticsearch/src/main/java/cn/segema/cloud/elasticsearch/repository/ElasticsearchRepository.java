@@ -1,4 +1,4 @@
-package cn.segema.cloud.system.repository;
+package cn.segema.cloud.elasticsearch.repository;
 
 import java.util.List;
 
@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import cn.segema.cloud.system.domain.User;
-import cn.segema.cloud.system.vo.UserPersonalVO;
+import cn.segema.cloud.elasticsearch.domain.Elasticsearch;
+import cn.segema.cloud.elasticsearch.vo.UserPersonalVO;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
+public interface ElasticsearchRepository extends JpaRepository<Elasticsearch, String> {
 	
 	 //@Select("SELECT CONTRACTID,CONTTRRACTNAME,TOTALMONEY  FROM spring_cloud_study.contract WHERE contractid=#{0};") 
 	 //public  Map<String, Object> getTableData(int pageNum, int pageSize, String username);
