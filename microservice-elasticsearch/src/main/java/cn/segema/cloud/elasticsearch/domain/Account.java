@@ -1,6 +1,8 @@
 package cn.segema.cloud.elasticsearch.domain;
 
-@Document(indexName = "cwenao",type = "accountinfo", shards = 1,replicas = 0, refreshInterval = "-1")
+import org.springframework.data.elasticsearch.annotations.Document;
+
+@Document(indexName = "accountIndex",type = "account", shards = 1,replicas = 0, refreshInterval = "-1")
 public class Account {
     private String id;
     private String accountName;

@@ -21,7 +21,7 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 127.0.0.1:9200 
-      local: false
+      local: false 
       repositories: 
          enabled: true
 logging:

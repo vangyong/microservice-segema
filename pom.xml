@@ -10,12 +10,6 @@
 
   <modules>
     <module>microservice-discovery-eureka</module>
-    <module>microservice-system</module>
-    <module>microservice-system-web</module>
-    <module>microservice-contract</module>
-    <module>microservice-contract-web</module>
-    <module>microservice-rabbitmq</module>
-    <module>microservice-rabbitmq2</module>
     <module>microservice-consumer-movie-ribbon</module>
     <module>microservice-consumer-movie-feign</module>
     <module>microservice-consumer-movie-ribbon-with-hystrix</module>
@@ -28,6 +22,14 @@
     <module>microservice-config-server-eureka</module>
     <module>microservice-config-client-eureka</module>
     <module>microservice-api-gateway</module>
+    <module>microservice-system</module>
+    <module>microservice-system-web</module>
+    <module>microservice-contract</module>
+    <module>microservice-contract-web</module>
+    <module>microservice-rabbitmq</module>
+    <module>microservice-rabbitmq2</module>
+    <module>microservice-elasticsearch</module>
+    <module>microservice-activiti</module>
   </modules>
 
   <!-- 使用最新的spring-boot版本 -->

@@ -59,8 +59,9 @@ public class RoleController {
 
 	@RequestMapping(value = "edit")
 	public Role edit(Role role, Model model) {
-		// Role oldRole = roleRepository.getOne(role.getRoleId());
-		// BeanUtils.copyProperties(role, oldRole);
+		Long a = 2L;
+		
+		
 		roleRepository.save(role);
 		return role;
 	}
