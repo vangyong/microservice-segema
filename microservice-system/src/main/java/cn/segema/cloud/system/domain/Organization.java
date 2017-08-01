@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 组织
+ * @author wangyong
+ *
+ */
 @Table(name = "SYS_ORGANIZATION")
 @Entity
 public class Organization {

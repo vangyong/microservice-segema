@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * 用户人员关系
+ * @author wangyong
+ *
+ */
 @Table(name = "SYS_USER_PERSONAL")
 @Entity
 public class UserPersonal {
