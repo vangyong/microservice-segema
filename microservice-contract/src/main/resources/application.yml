@@ -8,7 +8,7 @@ spring:
     generate-ddl: true
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       #naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties: 
       hibernate: 
@@ -16,7 +16,7 @@ spring:
   datasource:                           # 指定数据源
      url: jdbc:mysql://127.0.0.1:3306/spring_cloud_study
      driverClassName: com.mysql.jdbc.Driver
-     username: root  
+     username: root
      password: root
 logging:
   level:
