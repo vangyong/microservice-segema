@@ -7,19 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "SYS_DEPARTMENT")
+@Table(name = "SYS_ORGANIZATION")
 @Entity
-public class Department {
+public class Organization {
 	@Id
-	@Column(name = "DEPARTMENTID")
+	@Column(name = "ORGANIZATIONID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String departmentId;
+	private String orgnizationId;
 
-	@Column(name = "DEPARTMENTNAME")
-	private String departmentName;
+	@Column(name = "ORGANIZATIONNAME")
+	private String orgnizationName;
 
-	@Column(name = "DEPARTMENTCODE")
-	private String departmentCode;
+	@Column(name = "ORGANIZATIONCODE")
+	private String orgnizationCode;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
@@ -30,28 +30,28 @@ public class Department {
 	@Column(name = "TYPE")
 	private Integer type;
 
-	public String getDepartmentId() {
-		return departmentId;
+	public String getOrgnizationId() {
+		return orgnizationId;
 	}
 
-	public void setDepartmentId(String departmentId) {
-		this.departmentId = departmentId;
+	public void setOrgnizationId(String orgnizationId) {
+		this.orgnizationId = orgnizationId;
 	}
 
-	public String getDepartmentName() {
-		return departmentName;
+	public String getOrgnizationName() {
+		return orgnizationName;
 	}
 
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
+	public void setOrgnizationName(String orgnizationName) {
+		this.orgnizationName = orgnizationName;
 	}
 
-	public String getDepartmentCode() {
-		return departmentCode;
+	public String getOrgnizationCode() {
+		return orgnizationCode;
 	}
 
-	public void setDepartmentCode(String departmentCode) {
-		this.departmentCode = departmentCode;
+	public void setOrgnizationCode(String orgnizationCode) {
+		this.orgnizationCode = orgnizationCode;
 	}
 
 	public String getDescription() {

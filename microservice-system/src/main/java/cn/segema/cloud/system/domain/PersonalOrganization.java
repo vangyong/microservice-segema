@@ -9,28 +9,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name = "SYS_USER_PERSONAL")
+@Table(name = "SYS_PERSONAL_ORGANIZATION")
 @Entity
-public class PersonalDepartment {
+public class PersonalOrganization {
 	@Id
-	@Column(name = "PERSONALDEPARTMENTID")
+	@Column(name = "PERSONALORGANIZATIONID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String PersonalDepartmentId;
+	private String PersonalOrganizationId;
 
 	@OneToOne
 	@JoinColumn(name = "PERSONALID")
 	private Personal personal;
 
 	@OneToOne
-	@JoinColumn(name = "DEPARTMENTLID")
-	private Department department;
+	@JoinColumn(name = "ORGANIZATIONID")
+	private Organization organization;
 
-	public String getPersonalDepartmentId() {
-		return PersonalDepartmentId;
+	public String getPersonalOrganizationId() {
+		return PersonalOrganizationId;
 	}
 
-	public void setPersonalDepartmentId(String personalDepartmentId) {
-		PersonalDepartmentId = personalDepartmentId;
+	public void setPersonalOrganizationId(String personalOrganizationId) {
+		PersonalOrganizationId = personalOrganizationId;
 	}
 
 	public Personal getPersonal() {
@@ -41,12 +41,14 @@ public class PersonalDepartment {
 		this.personal = personal;
 	}
 
-	public Department getDepartment() {
-		return department;
+	public Organization getOrganization() {
+		return organization;
 	}
 
-	public void setDepartment(Department department) {
-		this.department = department;
+	public void setOrganization(Organization organization) {
+		this.organization = organization;
 	}
+
+	
 
 }
