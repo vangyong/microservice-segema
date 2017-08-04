@@ -23,6 +23,7 @@ import cn.segema.cloud.system.repository.UserRepository;
 import cn.segema.cloud.system.vo.UserPersonalVO;
 
 @RestController
+@RequestMapping(value = "/user")
 public class UserController {
   @Autowired
   private DiscoveryClient discoveryClient;
@@ -81,7 +82,7 @@ public class UserController {
   
   @GetMapping("/listByPage/{page}/{size}")
 	public Page<User> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
-		Sort sort = new Sort(Direction.DESC, "contractId");
+		Sort sort = new Sort(Direction.DESC, "userId");
 		Pageable pageable = new PageRequest(page, size, sort);
 		return userRepository.findAll(pageable);
 	}
