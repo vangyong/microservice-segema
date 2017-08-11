@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Table(name = "ACTIVITI_USER")
 @Entity
-public class User {
+public class ActivitiUser {
 	@Id
 	@Column(name = "USERID")
 	@GeneratedValue(strategy=GenerationType.AUTO)

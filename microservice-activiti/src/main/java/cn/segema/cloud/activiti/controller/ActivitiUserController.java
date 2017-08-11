@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.segema.cloud.activiti.domain.User;
-import cn.segema.cloud.activiti.repository.UserRepository;
+import cn.segema.cloud.activiti.domain.ActivitiUser;
+import cn.segema.cloud.activiti.repository.ActivitiUserRepository;
 
 @RestController
-public class UserController {
+public class ActivitiUserController {
   @Autowired
   private DiscoveryClient discoveryClient;
   @Autowired
-  private UserRepository userRepository;
+  private ActivitiUserRepository activitiUserRepository;
 
   /**
    * 注：@GetMapping("/{id}")是spring 4.3的新注解等价于：
@@ -36,34 +36,34 @@ public class UserController {
    * @return user信息
    */
   @GetMapping("/{userId}")
-  public User findById(@PathVariable Integer userId) {
-    User findOne = this.userRepository.findOne(userId);
+  public ActivitiUser findById(@PathVariable Integer userId) {
+    ActivitiUser findOne = this.activitiUserRepository.findOne(userId);
     return findOne;
   }
   
   @GetMapping("/list")
-	public List<User> list(User user, Model model) {
-		List<User> userList = userRepository.findAll();
+	public List<ActivitiUser> list(ActivitiUser user, Model model) {
+		List<ActivitiUser> userList = activitiUserRepository.findAll();
 		return userList;
 	}
 
 	@PostMapping("/add")
-	public User add(User user, Model model) {
-		userRepository.save(user);
+	public ActivitiUser add(ActivitiUser user, Model model) {
+		activitiUserRepository.save(user);
 		return user;
 	}
 
 	@RequestMapping(value = "edit")
-	public User edit(User user, Model model) {
+	public ActivitiUser edit(ActivitiUser user, Model model) {
 		// Role oldRole = roleRepository.getOne(role.getRoleId());
 		// BeanUtils.copyProperties(role, oldRole);
-		userRepository.save(user);
+		activitiUserRepository.save(user);
 		return user;
 	}
 
 	@RequestMapping(value = "delete")
-	public User delete(User user) {
-		userRepository.delete(user);
+	public ActivitiUser delete(ActivitiUser user) {
+		activitiUserRepository.delete(user);
 		return user;
 	}
   
@@ -76,10 +76,10 @@ public class UserController {
   
   
   @GetMapping("/listByPage/{page}/{size}")
-	public Page<User> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
+	public Page<ActivitiUser> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
 		Sort sort = new Sort(Direction.DESC, "contractId");
 		Pageable pageable = new PageRequest(page, size, sort);
-		return userRepository.findAll(pageable);
+		return activitiUserRepository.findAll(pageable);
 	}
 
   /**

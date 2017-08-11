@@ -3,11 +3,11 @@ package cn.segema.cloud.activiti.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import cn.segema.cloud.activiti.domain.User;
+import cn.segema.cloud.activiti.domain.ActivitiUser;
 
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface ActivitiUserRepository extends JpaRepository<ActivitiUser, Integer> {
 	
 	 //@Select("SELECT CONTRACTID,CONTTRRACTNAME,TOTALMONEY  FROM spring_cloud_study.contract WHERE contractid=#{0};") 
 	 //public  Map<String, Object> getTableData(int pageNum, int pageSize, String username);
