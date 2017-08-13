@@ -25,7 +25,7 @@ public class Consumers {
 	
 	@RabbitListener(
 			// 1.rabbitAdmin:RabbitAdmin名称
-			admin = "rabbitAdmin", bindings = @QueueBinding(
+			admin = "", bindings = @QueueBinding(
 					// 1.test.demo.send:队列名,2.true:是否长期有效,3.false:是否自动删除
 					value = @Queue(value = "myFanoutQueue", durable = "true", autoDelete = "false"),
 					// 1.default.topic交换器名称(默认值),2.true:是否长期有效,3.topic:类型是topic

@@ -20,8 +20,8 @@ spring:
      password: root
   rabbitmq: 
      addresses: 127.0.0.1:5672
-     username: wangyong 
-     password: wangyong  
+     username: guest
+     password: guest
      virtual-host: / 
 logging:
   level:

@@ -1,5 +1,5 @@
 server:
-  port: 12002
+  port: 12006
 spring:
   application: 
     name: microservice-activiti    # 项目名称尽量用小写
@@ -17,6 +17,15 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
+  mail:
+    host: smtp.163.com  
+    username: 
+    password: 
+    properties: 
+      mail:
+      smtp:
+      auth: true
+      timeout: 25000
     
 #  thymeleaf:
 #        cache: false

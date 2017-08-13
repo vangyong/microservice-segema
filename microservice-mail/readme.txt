@@ -1,3 +1,7 @@
+服务搭建链接：
+http://aclyyx.iteye.com/blog/1179056
+
+
 
 
 http://127.0.0.1:12002/model/modelList
