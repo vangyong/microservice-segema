@@ -19,7 +19,6 @@ import javax.persistence.Table;
 public class PersonalOrganization {
 	@Id
 	@Column(name = "PERSONALORGANIZATIONID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String PersonalOrganizationId;
 
 	@OneToOne

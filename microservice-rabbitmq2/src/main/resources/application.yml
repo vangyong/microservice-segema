@@ -1,5 +1,5 @@
 server:
-  port: 7001
+  port: 12005
 spring:
   application:
     name: microservice-rabbitmq2    # 项目名称尽量用小写

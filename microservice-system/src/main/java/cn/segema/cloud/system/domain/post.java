@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class post {
 	@Id
 	@Column(name = "POSTID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String postId;
 	
 	@Column(name = "POSTNAME")

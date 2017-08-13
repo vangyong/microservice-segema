@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 12002
 spring:
   application:
     name: microservice-contract    # 项目名称尽量用小写

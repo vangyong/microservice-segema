@@ -73,9 +73,9 @@ public class UserController {
 	}
   
   
-  @GetMapping("/listByUserName/{userName}") 
-  public List<UserPersonalVO> listByUserName(@PathVariable String userName) {
-	  List<UserPersonalVO> userList = userRepository.findByUserName(userName);
+  @GetMapping("/listUserPersonalByUserName/{userName}") 
+  public List<UserPersonalVO> listUserPersonalByUserName(@PathVariable String userName) {
+	  List<UserPersonalVO> userList = userRepository.findUserPersonalByUserName(userName);
 	  return userList;
 	}
   

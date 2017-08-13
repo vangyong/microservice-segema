@@ -8,8 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import cn.segema.cloud.system.web.util.JacksonUtil;
 import cn.segema.cloud.system.web.vo.UserVO;
-
 
 
 @Service
@@ -29,8 +29,14 @@ public class UserWebService {
   public UserVO findById(String userId) {
 	  	Map<String,String> parameter = new HashMap<String,String>();
 	  	parameter.put("userId", userId);
-	  	UserVO user = (UserVO) this.restTemplate.getForObject("http://microservice-system/user/", UserVO.class,parameter);
-	    return user;
+	  	//String userJsonStr = (String) this.restTemplate.getForObject("http://microservice-system:12000/microservice-system/user/", String.class,parameter);
+	  	//String userJsonStr = (String) this.restTemplate.getForObject("http://microservice-system:12000/user/1",String.class);
+	    //UserVO user=(UserVO)JacksonUtil.readValue(userJsonStr, UserVO.class);  
+	  	UserVO user = new UserVO();
+	  	user.setUserId("2");
+	  	this.restTemplate.postForEntity("http://microservice-system:12000/user/add",user,String.class);
+	  	
+	  	return user;
 	  }
 
 }

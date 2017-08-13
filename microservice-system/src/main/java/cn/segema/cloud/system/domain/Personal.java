@@ -20,7 +20,6 @@ import javax.persistence.Table;
 public class Personal {
 	@Id
 	@Column(name = "PERSONALID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String personalId;
 	
 	@Column(name = "PERSONALNAME")

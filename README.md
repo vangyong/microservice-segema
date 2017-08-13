@@ -46,7 +46,15 @@
 | microservice-discovery-eureka            | 8761 | 注册中心                   | /               |
 | microservice-hystrix-dashboard           | 8030 | hystrix监控              | /hystrix.stream |
 | microservice-hystrix-turbine             | 8031 | turbine                | /turbine.stream |
-| microservice-system               | 8000 | 服务提供者                  | /1              |
-|                                          |      |                        |                 |
+| microservice-system                      | 12000 | 系统管理服务提供者               | /1              |
+| microservice-system-web                  | 12001 | 系统管理服务消费者               | /1              |
+| microservice-contract                    | 12002 | 合同管理服务提供者               | /1              |
+| microservice-contract-web                | 12003 | 合同管理服务消费者               | /1              |
+| microservice-rabbitmq                    | 12004 | MQ服务提供者               | /1              |
+| microservice-rabbitmq2                   | 12005 | MQ服务提供者2               | /1              |
+| microservice-activiti                    | 12006 | 合同管理服务提供者               | /1              |
+| microservice-activiti-web                | 12007 | 合同管理服务消费者               | /1              |
+| microservice-flowable                    | 12008 | 合同管理服务提供者               | /1              |
+| microservice-flowable-web                | 12009 | 合同管理服务消费者               | /1              |
 
 

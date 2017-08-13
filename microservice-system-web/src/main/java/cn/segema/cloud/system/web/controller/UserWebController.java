@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.segema.cloud.system.web.service.UserWebService;
 import cn.segema.cloud.system.web.vo.UserVO;
@@ -21,10 +22,9 @@ public class UserWebController {
 	
 	@Autowired
 	private UserWebService userWebService;
-
- 
     
-    @GetMapping("/getTableData") 
+	@RequestMapping("/getTableData") 
+    @ResponseBody
     public Page<UserVO> getTableData() {
   	  try { 
   		  int pageNum=1;
@@ -38,7 +38,8 @@ public class UserWebController {
   	  } return null; 
   	}
     
-    @GetMapping("/listByPageable")
+    @RequestMapping("/listByPageable")
+    @ResponseBody
 	public Page<UserVO> listByPageable(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "5") Integer size) {
 		Sort sort = new Sort(Direction.DESC, "userId");
@@ -46,7 +47,8 @@ public class UserWebController {
 		return userWebService.listByPageable(page,size);
 	}
     
-    @GetMapping("/findById/{userId}")
+    @RequestMapping("/findById/{userId}")
+    @ResponseBody
     public UserVO findById(@PathVariable String userId) {
     	UserVO findOne = this.userWebService.findById(userId);
       return findOne;

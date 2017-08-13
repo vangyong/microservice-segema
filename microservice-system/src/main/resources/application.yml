@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 12000
 spring:
   application:
     name: microservice-system    # 项目名称尽量用小写
@@ -8,12 +8,12 @@ spring:
     generate-ddl: false
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties: 
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
   datasource:                           # 指定数据源
-    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_study
+    url: jdbc:mysql://127.0.0.1:3306/microservice_system
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root

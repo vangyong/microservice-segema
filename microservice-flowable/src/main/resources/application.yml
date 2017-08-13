@@ -1,5 +1,5 @@
 server:
-  port: 12004
+  port: 12008
 spring:
   application: 
     name: microservice-flowable    # 项目名称尽量用小写
@@ -13,7 +13,7 @@ spring:
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
   datasource:                           # 指定数据源
-    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_study
+    url: jdbc:mysql://127.0.0.1:3306/microservice_flowable
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root

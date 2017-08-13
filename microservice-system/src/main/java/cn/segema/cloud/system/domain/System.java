@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class System {
 	@Id
 	@Column(name = "SYSTEMID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String systemId;
 	
 	@Column(name = "SYSTEMNAME")
