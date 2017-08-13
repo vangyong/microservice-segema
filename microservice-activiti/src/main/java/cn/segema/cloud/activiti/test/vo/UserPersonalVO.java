@@ -1,4 +1,4 @@
-package cn.segema.cloud.activiti.vo;
+package cn.segema.cloud.activiti.test.vo;
 
 public class UserPersonalVO {
 

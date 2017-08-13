@@ -18,13 +18,13 @@ spring:
     username: root  
     password: root
     
-  thymeleaf:
-        cache: false
-    #    prefix: classpath:/templates/
-    #    suffix: .html
-    #    mode: HTML5
-    #    encoding: UTF-8
-    #    content-type: text/html
+#  thymeleaf:
+#        cache: false
+#        prefix: classpath:/templates/
+#        suffix: .html
+#        mode: HTML5
+#        encoding: UTF-8
+#        content-type: text/html
 logging:
   level:
     root: INFO

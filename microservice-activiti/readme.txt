@@ -1,8 +1,10 @@
 
 
-http://127.0.0.1:12002/models/modelList
+http://127.0.0.1:12002/model/modelList
 
-http://127.0.0.1:12002/models/newModel
+http://127.0.0.1:12002/model/newModel
+
+http://127.0.0.1:12002/model/create?name=aaaa&key=&123description=dddd
 
 http://127.0.0.1:12002/service/editor/stencilset
 

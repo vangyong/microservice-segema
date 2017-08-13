@@ -1,9 +1,9 @@
-package cn.segema.cloud.activiti.repository;
+package cn.segema.cloud.activiti.test.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import cn.segema.cloud.activiti.domain.ApplySimple;
+import cn.segema.cloud.activiti.test.domain.ApplySimple;
 
 
 public interface ApplySimpleRepository extends JpaRepository<ApplySimple, Long>{
