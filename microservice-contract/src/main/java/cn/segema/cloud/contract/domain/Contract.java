@@ -1,27 +1,28 @@
 package cn.segema.cloud.contract.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "CON_CONTRACT")
 @Entity
 public class Contract {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="CONTRACTID")
-	private Long contractId;
+	private String contractId;
 	@Column(name="CONTRACTNAME")
 	private String contractName;
 	@Column(name="TOTALMONEY")
-	private Integer totalMoney;
+	private BigDecimal totalMoney;
 
-	public Long getContractId() {
+	public String getContractId() {
 		return contractId;
 	}
 
-	public void setContractId(Long contractId) {
+	public void setContractId(String contractId) {
 		this.contractId = contractId;
 	}
 
@@ -33,11 +34,11 @@ public class Contract {
 		this.contractName = contractName;
 	}
 
-	public Integer getTotalMoney() {
+	public BigDecimal getTotalMoney() {
 		return totalMoney;
 	}
 
-	public void setTotalMoney(Integer totalMoney) {
+	public void setTotalMoney(BigDecimal totalMoney) {
 		this.totalMoney = totalMoney;
 	}
 

@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import cn.segema.cloud.contract.domain.Contract;
 import cn.segema.cloud.contract.repository.ContractRepository;
+import cn.segema.cloud.contract.vo.UserVO;
 
 /**
  * 合同接口
- * @author Administrator
- *
  */
 @RestController
 public class ContractController {
@@ -28,13 +28,15 @@ public class ContractController {
 	private DiscoveryClient discoveryClient;
 	@Autowired
 	private ContractRepository contractRepository;
+	@Autowired
+	private RestTemplate restTemplate;
 
 	/**
 	 * @param id
 	 * @return 合同信息
 	 */
 	@GetMapping("/{id}")
-	public Contract findById(@PathVariable Long id) {
+	public Contract findById(@PathVariable String id) {
 		Contract findOne = this.contractRepository.findOne(id);
 		return findOne;
 	}
@@ -59,7 +61,6 @@ public class ContractController {
 	@GetMapping("/listByPageable")
 	public Page<Contract> listByPageable(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "5") Integer size) {
-
 		Sort sort = new Sort(Direction.DESC, "contractId");
 		Pageable pageable = new PageRequest(page, size, sort);
 		return contractRepository.findAll(pageable);
@@ -74,5 +75,17 @@ public class ContractController {
 	public Page<Contract> listByPageableDefault(@PageableDefault(value = 15, sort = { "contractId" }, direction = Sort.Direction.DESC) Pageable pageable) {
 		return contractRepository.findAll(pageable);
 	}
+	
+	/**
+	 * @param id
+	 * @return 合同信息
+	 */
+	@GetMapping("/contractdetail/{id}/{userId}")
+	public Contract findContractDetailById(@PathVariable String id,@PathVariable String userId) {
+		UserVO userVO = (UserVO)restTemplate.getForObject("http://microservice-system/user/{userId}", UserVO.class, userId);
+		Contract findOne = this.contractRepository.findOne(id);
+		return findOne;
+	}
+	
 
 }

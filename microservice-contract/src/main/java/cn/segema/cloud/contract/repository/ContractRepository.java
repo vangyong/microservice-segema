@@ -6,8 +6,6 @@ import org.springframework.stereotype.Repository;
 import cn.segema.cloud.contract.domain.Contract;
 
 @Repository
-public interface ContractRepository extends JpaRepository<Contract, Long> {
+public interface ContractRepository extends JpaRepository<Contract, String> {
 	
-	// @Select("SELECT CONTRACTID,CONTTRRACTNAME,TOTALMONEY  FROM spring_cloud_study.contract WHERE contractid=#{0};") 
-	// public Contract getContractById(Long id);
 }
