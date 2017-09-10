@@ -1,5 +1,7 @@
 package cn.segema.cloud.contract.controller;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -30,6 +32,9 @@ public class ContractController {
 	private ContractRepository contractRepository;
 	@Autowired
 	private RestTemplate restTemplate;
+	
+//	@Autowired
+//	private UserRepository userRepository;
 
 	/**
 	 * @param id
@@ -38,6 +43,8 @@ public class ContractController {
 	@GetMapping("/{id}")
 	public Contract findById(@PathVariable String id) {
 		Contract findOne = this.contractRepository.findOne(id);
+		//User user = userRepository.findOne("1");
+		
 		return findOne;
 	}
 

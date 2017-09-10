@@ -57,5 +57,5 @@
 | microservice-flowable                    | 12008 | 合同管理服务提供者               | /1              |
 | microservice-flowable-web                | 12009 | 合同管理服务消费者               | /1              |
 | microservice-performance                 | 12010 | 绩效管理服务提供者               | /1              |
-
+| microservice-shiro                       | 12011 | 权限认证服务提供者               | /1              |
 

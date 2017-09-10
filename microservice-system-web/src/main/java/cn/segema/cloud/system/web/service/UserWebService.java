@@ -34,7 +34,10 @@ public class UserWebService {
 	    //UserVO user=(UserVO)JacksonUtil.readValue(userJsonStr, UserVO.class);  
 	  	UserVO user = new UserVO();
 	  	user.setUserId("2");
-	  	this.restTemplate.postForEntity("http://microservice-system:12000/user/add",user,String.class);
+	  	user.setPassword("password");
+	  	user.setMobileNumber("13901010808");
+	  	
+	  	//this.restTemplate.postForEntity("http://microservice-system:12000/user/add",user,String.class);
 	  	
 	  	return user;
 	  }
