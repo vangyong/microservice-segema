@@ -2,8 +2,6 @@ package cn.segema.cloud.system.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -28,12 +26,12 @@ public class Resource  {
     private String type;
 	@Column(name = "RESOURCEURL")
     private String resourceUrl;
-	@Column(name = "LEVEL")
-    private String level;
+	@Column(name = "RANK")
+    private String rank;
 	@Column(name = "ICON")
     private String icon;
-	@Column(name = "ISHIDE")
-    private Integer isHide;
+	@Column(name = "HIDE")
+    private Integer hide;
 	@Column(name = "DESCRIPTION")
     private String description;
 	@Column(name = "DELETESTATUS")
@@ -87,13 +85,7 @@ public class Resource  {
         this.resourceUrl = resourceUrl;
     }
 
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
+   
 
     public String getIcon() {
         return icon;
@@ -103,15 +95,23 @@ public class Resource  {
         this.icon = icon;
     }
 
-    public Integer getIsHide() {
-        return isHide;
-    }
+    public String getRank() {
+		return rank;
+	}
 
-    public void setIsHide(Integer isHide) {
-        this.isHide = isHide;
-    }
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
 
-    public String getDescription() {
+	public Integer getHide() {
+		return hide;
+	}
+
+	public void setHide(Integer hide) {
+		this.hide = hide;
+	}
+
+	public String getDescription() {
         return description;
     }
 

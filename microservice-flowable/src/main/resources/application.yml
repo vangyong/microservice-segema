@@ -24,16 +24,16 @@ spring:
 #      firstname: Test
 #      lastname: Administrator
       
-flowable: 
-  check-process-definitions: false
+#flowable: 
+#  check-process-definitions: false
     
-  thymeleaf:
-        cache: false
-    #    prefix: classpath:/templates/
-    #    suffix: .html
-    #    mode: HTML5
-    #    encoding: UTF-8
-    #    content-type: text/html
+#  thymeleaf:
+#        cache: false
+#    #    prefix: classpath:/templates/
+#    #    suffix: .html
+#    #    mode: HTML5
+#    #    encoding: UTF-8
+#    #    content-type: text/html
 logging:
   level:
     root: INFO
