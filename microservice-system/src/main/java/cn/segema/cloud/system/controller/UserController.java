@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.segema.cloud.system.common.Pager;
 import cn.segema.cloud.system.domain.User;
 import cn.segema.cloud.system.repository.UserRepository;
 import cn.segema.cloud.system.vo.UserPersonalVO;
@@ -80,13 +81,25 @@ public class UserController {
 	}
   
   
-  @GetMapping("/listByPage/{page}/{size}")
-	public Page<User> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
+//  @GetMapping("/listByPage/{page}/{size}")
+//	public Page<User> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
+//		Sort sort = new Sort(Direction.DESC, "userId");
+//		Pageable pageable = new PageRequest(page, size, sort);
+//		return userRepository.findAll(pageable);
+//	}
+  @GetMapping("/listByPage")
+	public Pager<User> listByPage() {
 		Sort sort = new Sort(Direction.DESC, "userId");
-		Pageable pageable = new PageRequest(page, size, sort);
-		return userRepository.findAll(pageable);
+		Pageable pageable = new PageRequest(0, 30, sort);
+		Page<User> page = userRepository.findAll(pageable);
+		Pager<User> pager = new Pager<User>();
+		pager.setCode("0");
+		pager.setMsg("success");
+		pager.setCount(page.getTotalElements());
+		pager.setData(page.getContent());
+		return pager;
 	}
-
+  
   /**
    * 本地服务实例的信息
    * @return
