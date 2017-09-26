@@ -37,7 +37,7 @@ public class Filecenter {
 	private BigDecimal totalSize;
 	
 	@Column(name="FIILECONTENT")
-	private Blob fileContent;
+	private byte[] fileContent;
 
 	public String getFileId() {
 		return fileId;
@@ -103,12 +103,14 @@ public class Filecenter {
 		this.totalSize = totalSize;
 	}
 
-	public Blob getFileContent() {
+	public byte[] getFileContent() {
 		return fileContent;
 	}
 
-	public void setFileContent(Blob fileContent) {
+	public void setFileContent(byte[] fileContent) {
 		this.fileContent = fileContent;
 	}
+
+	
 
 }

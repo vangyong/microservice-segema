@@ -10,12 +10,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import cn.segema.cloud.filecenter.config.FeignMultipartSupportConfig;
 
-@FeignClient(name = "xxx",configuration = FeignMultipartSupportConfig.class)
+@FeignClient(name = "microservice-openAccount",configuration = FeignMultipartSupportConfig.class)
 public interface OpenAccountFeignClient {
 	
-	 @RequestMapping(method = RequestMethod.POST, value = "/xxxxx",
-			 produces = {MediaType.APPLICATION_JSON_UTF8_VALUE},
-			 consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	    public ResponseEntity<?> ocrIdCard(@RequestPart(value = "file") MultipartFile file);
+	 @RequestMapping(method = RequestMethod.POST, value = "/uploadIdCard",
+			 		produces = {MediaType.APPLICATION_JSON_UTF8_VALUE},
+			 		consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	    public ResponseEntity<?> uploadIdCard(@RequestPart(value = "file") MultipartFile file);
 
 }

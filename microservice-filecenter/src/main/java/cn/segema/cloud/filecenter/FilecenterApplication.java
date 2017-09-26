@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@ComponentScan(basePackages = { "cn.segema.cloud" })
 public class FilecenterApplication {
 	/**
 	 * 实例化RestTemplate，通过@LoadBalanced注解开启均衡负载能力.
