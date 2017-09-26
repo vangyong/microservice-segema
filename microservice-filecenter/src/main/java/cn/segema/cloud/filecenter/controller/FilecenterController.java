@@ -70,6 +70,7 @@ public class FilecenterController {
             filecenter.setAbsolutePath(filePath+fileName);
             filecenter.setTotalSize(new BigDecimal(file.getSize()));
             filecenter.setFileContent(file.getBytes());
+            filecenterRepository.save(filecenter);
         } catch (Exception e) {
             // TODO: handle exception
         }
