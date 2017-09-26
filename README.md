@@ -50,12 +50,12 @@
 | microservice-system-web                  | 12001 | 系统管理服务消费者               | /1              |
 | microservice-contract                    | 12002 | 合同管理服务提供者               | /1              |
 | microservice-contract-web                | 12003 | 合同管理服务消费者               | /1              |
-| microservice-rabbitmq                    | 12004 | MQ服务提供者                    | /1              |
-| microservice-rabbitmq2                   | 12005 | MQ服务提供者2                   | /1              |
+| microservice-rabbitmq                    | 12004 | MQ服务提供者                          | /1              |
+| microservice-rabbitmq2                   | 12005 | MQ服务提供者2      | /1              |
 | microservice-activiti                    | 12006 | 合同管理服务提供者               | /1              |
 | microservice-activiti-web                | 12007 | 合同管理服务消费者               | /1              |
 | microservice-flowable                    | 12008 | 合同管理服务提供者               | /1              |
 | microservice-flowable-web                | 12009 | 合同管理服务消费者               | /1              |
 | microservice-performance                 | 12010 | 绩效管理服务提供者               | /1              |
 | microservice-shiro                       | 12011 | 权限认证服务提供者               | /1              |
-
+| microservice-filecenter                  | 12012 | 文件中心服务                             | /1              |
