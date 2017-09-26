@@ -14,9 +14,9 @@ import com.itmuch.cloud.study.user.feign.UserFeignHystrixClient.HystrixClientFal
  * 使用@FeignClient注解的fallback属性，指定fallback类
  * @author eacdy
  */
-@FeignClient(name = "microservice-provider-user", fallback = HystrixClientFallback.class)
+@FeignClient(name = "microservice-system", fallback = HystrixClientFallback.class)
 public interface UserFeignHystrixClient {
-  @RequestMapping("/{id}")
+  @RequestMapping("/user/{id}")
   public User findByIdFeign(@RequestParam("id") Long id);
 
   /**

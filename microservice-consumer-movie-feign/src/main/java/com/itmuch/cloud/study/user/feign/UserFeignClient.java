@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.itmuch.cloud.study.user.entity.User;
 
 /**
- * 使用@FeignClient("microservice-provider-user")注解绑定microservice-provider-user服务，还可以使用url参数指定一个URL。
- * @author eacdy
+ * 使用@FeignClient("microservice-system")注解绑定microservice-system服务，还可以使用url参数指定一个URL。
+ * @author wangyong
  */
-@FeignClient(name = "microservice-provider-user")
+@FeignClient(name = "microservice-system")
 public interface UserFeignClient {
-  @RequestMapping("/{id}")
-  public User findByIdFeign(@RequestParam("id") Long id);
+  @RequestMapping("/user/{id}")
+  public User findByIdFeign(@RequestParam("id") String id);
 }
