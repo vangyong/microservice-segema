@@ -12,7 +12,7 @@ spring:
     multipart: 
       max-file-size: 20MB
       max-request-size: 20MB
-      location: /Users/wangyong/test/testfiles
+     # location: /Users/wangyong/test/testfiles
   jpa: 
     database: MYSQL
     generate-ddl: true

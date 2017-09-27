@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +12,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,11 +40,8 @@ public class FilecenterController {
 	@Value("${filecenter.local.directory}")
 	private String filecenterLocalDirectory;
 	
-	
-
 	@RequestMapping(value="/uploadfile", method = RequestMethod.GET)
     public String uploadFile() {
-        //跳转到 templates 目录下的 uploadimg.html
         return "uploadfile";
     }
 
@@ -53,21 +52,17 @@ public class FilecenterController {
             HttpServletRequest request) {
         String contentType = file.getContentType();
         String fileName = file.getOriginalFilename();
-        System.out.println("fileName-->" + fileName);
-        System.out.println("getContentType-->" + contentType);
-        //String filePath = request.getSession().getServletContext().getRealPath("imgupload/");
-        String filePath = filecenterLocalDirectory;
-        
+        String localDirectory = filecenterLocalDirectory;
         try {
-            FileUtil.uploadFile(file.getBytes(), filePath, fileName);
-            
+        		String fileId = UUID.randomUUID().toString();
+            FileUtil.uploadFile(file.getBytes(), localDirectory+fileId+"/", fileName);
             Filecenter filecenter = new Filecenter();
-            filecenter.setFileId(UUID.randomUUID().toString());
+            filecenter.setFileId(fileId);
             filecenter.setFileName(fileName);
             filecenter.setFileType(contentType);
-            filecenter.setRelativePath(fileName);
+            filecenter.setRelativePath(fileId+"/"+fileName);
             filecenter.setSuffix(fileName.substring(fileName.lastIndexOf(".")));
-            filecenter.setAbsolutePath(filePath+fileName);
+            filecenter.setAbsolutePath(localDirectory+fileId+"/"+fileName);
             filecenter.setTotalSize(new BigDecimal(file.getSize()));
             filecenter.setFileContent(file.getBytes());
             filecenterRepository.save(filecenter);
@@ -76,6 +71,23 @@ public class FilecenterController {
         }
         return "uploadimg success";
     }
+    
+    /**
+	 * 下载
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "download/{id}")
+	public void download(@PathVariable("id") String id,HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		Filecenter filecenter  = filecenterRepository.findOne(id);
+		String storeName = filecenter.getAbsolutePath();
+		String fileName = filecenter.getFileName();
+		
+		String contentType = "application/x-download";
+		FileUtil.download(request, response, storeName, contentType,fileName);
+	}
 
 	/**
 	 * 本地服务实例的信息
