@@ -1,7 +1,6 @@
 package cn.segema.cloud.filecenter.domain;
 
 import java.math.BigDecimal;
-import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
