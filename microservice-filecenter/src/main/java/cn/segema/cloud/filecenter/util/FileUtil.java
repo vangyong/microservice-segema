@@ -10,12 +10,7 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Value;
-
 public class FileUtil {
-	
-	@Value("${filecenter.local.directory}")
-	public static String filecenterLocalDirectory;
 
 	/**
 	 * 上传文件
@@ -35,7 +30,6 @@ public class FileUtil {
         out.close();
     }
 	
-	
 	/**
 	 * 下载文件
 	 * @param request
@@ -52,12 +46,7 @@ public class FileUtil {
 		request.setCharacterEncoding("UTF-8");
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
-
-		String ctxPath = filecenterLocalDirectory;
-		String downLoadPath = ctxPath + storeName;
-		
-		long fileLength = new File(downLoadPath).length();
-
+		long fileLength = new File(storeName).length();
 		response.setContentType(contentType);
 		String filename=realName;
 		String header = request.getHeader("User-Agent").toUpperCase();
@@ -70,7 +59,7 @@ public class FileUtil {
 		response.setHeader("Content-disposition", "attachment; filename="+ filename);
 		response.setHeader("Content-Length", String.valueOf(fileLength));
 
-		bis = new BufferedInputStream(new FileInputStream(downLoadPath));
+		bis = new BufferedInputStream(new FileInputStream(storeName));
 		bos = new BufferedOutputStream(response.getOutputStream());
 		byte[] buff = new byte[2048];
 		int bytesRead;

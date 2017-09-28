@@ -41,6 +41,14 @@ public class UserController {
   @GetMapping("/{userId}")
   public User findById(@PathVariable String userId) {
     User findOne = this.userRepository.findOne(userId);
+    //插入测试数据
+    User user = new User();
+    user.setUserId(UUID.randomUUID().toString());
+    user.setUserName("王勇");
+	user.setMobileNumber("18682561280");
+	user.setNickName("jessse");
+	userRepository.save(user);
+    
     return findOne;
   }
   

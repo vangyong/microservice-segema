@@ -35,7 +35,7 @@ public class Filecenter {
 	@Column(name="TOTALSIZE")
 	private BigDecimal totalSize;
 	
-	@Column(name="FIILECONTENT")
+	@Column(name="FILECONTENT")
 	private byte[] fileContent;
 
 	public String getFileId() {
