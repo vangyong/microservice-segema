@@ -1,4 +1,7 @@
 
+http://127.0.0.1:12006/activiti/deploy/MyProcess/1
+
+http://127.0.0.1:12006/activiti/startProcess/MyProcess/1
 
 http://127.0.0.1:12006/models/modelList
 

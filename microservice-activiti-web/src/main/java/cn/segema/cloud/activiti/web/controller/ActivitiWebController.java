@@ -5,6 +5,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,12 +16,27 @@ public class ActivitiWebController {
 	private DiscoveryClient discoveryClient;
 	
 	
-	
-	@RequestMapping("/listUI")
+	@RequestMapping(value="/listUI", method = RequestMethod.GET)
 	public ModelAndView listUI() {
-		ModelAndView ModelAndView = new ModelAndView("/test/activiti/user/listUI");
+		ModelAndView ModelAndView = new ModelAndView("activiti/user/listUI");
 		return ModelAndView;
 	}
+	
+	@RequestMapping(value="/uploadfile", method = RequestMethod.GET)
+    public String uploadFile() {
+        return "activiti/user/listUI";
+    }
+	
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+    public String test() {
+        return "test";
+    }
+	
+	@RequestMapping(value="/modeler", method = RequestMethod.GET)
+    public String modeler() {
+        return "modeler";
+    }
+
 	
 	/**
 	 * 本地服务实例的信息
