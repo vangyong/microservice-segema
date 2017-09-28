@@ -1,4 +1,4 @@
-package cn.segema.cloud.activiti.test.domain;
+package cn.segema.cloud.activiti.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

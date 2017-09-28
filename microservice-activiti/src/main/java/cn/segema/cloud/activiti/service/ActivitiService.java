@@ -1,4 +1,4 @@
-package cn.segema.cloud.activiti.test.service;
+package cn.segema.cloud.activiti.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,9 @@ import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ActivitiService {
 
 	// 注入为我们自动配置好的服务
@@ -26,6 +28,11 @@ public class ActivitiService {
 	 variables.put("personId", personId);
 	 variables.put("compId", compId);
 	 runtimeService.startProcessInstanceByKey("joinProcess", variables);
+	}
+	
+	// 获得所有任务别表
+	public List<Task> getTasks() {
+		return taskService.createTaskQuery().list();
 	}
 
 	// 获得某个人的任务别表

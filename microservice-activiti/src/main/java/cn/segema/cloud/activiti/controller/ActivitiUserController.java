@@ -1,4 +1,4 @@
-package cn.segema.cloud.activiti.test.controller;
+package cn.segema.cloud.activiti.controller;
 
 import java.util.List;
 
@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.segema.cloud.activiti.test.domain.ActivitiUser;
-import cn.segema.cloud.activiti.test.repository.ActivitiUserRepository;
+import cn.segema.cloud.activiti.domain.ActivitiUser;
+import cn.segema.cloud.activiti.repository.ActivitiUserRepository;
+import cn.segema.cloud.activiti.service.ActivitiService;
 
 @Controller
 @RequestMapping(value = "/test/activiti/user")
@@ -27,6 +28,8 @@ public class ActivitiUserController {
 	private DiscoveryClient discoveryClient;
 	@Autowired
 	private ActivitiUserRepository activitiUserRepository;
+	@Autowired
+	private ActivitiService activitiService;
 
 	/**
 	 * @param id
@@ -40,8 +43,11 @@ public class ActivitiUserController {
 	}
 	
 	@RequestMapping("/listUI")
-	public ModelAndView listUI(ActivitiUser user, Model model) {
+	public ModelAndView listUI() {
 		ModelAndView ModelAndView = new ModelAndView("/test/activiti/user/listUI");
+		
+		activitiService.getTasks();
+		
 		return ModelAndView;
 	}
 	
