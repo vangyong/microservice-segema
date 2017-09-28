@@ -24,6 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.segema.cloud.activiti.domain.ActivitiUser;
 import cn.segema.cloud.activiti.repository.ActivitiUserRepository;
 import cn.segema.cloud.activiti.service.ActivitiService;
+import cn.segema.cloud.activiti.vo.InstanceVO;
+import cn.segema.cloud.activiti.vo.FlowDefinitionVO;
 
 @Controller
 @RequestMapping(value = "/activiti")
@@ -41,25 +43,31 @@ public class ActivitiController {
 	 */
 	@RequestMapping("/deploy/{wokflowId}/{userId}")
 	@ResponseBody
-	public Deployment deploy(@PathVariable String wokflowId,@PathVariable String userId) {
+	public FlowDefinitionVO deploy(@PathVariable String wokflowId,@PathVariable String userId) {
 		
 		Deployment deployment = activitiService.deploy(wokflowId);
-		
-		return deployment;
+		FlowDefinitionVO flowDefinitionVO = new FlowDefinitionVO();
+		flowDefinitionVO.setId(deployment.getId());
+		flowDefinitionVO.setName(deployment.getName());
+		flowDefinitionVO.setTenantId(deployment.getTenantId());
+		return flowDefinitionVO;
 	}
 	
 	/**
 	 * @param wokflowId
-	 * @param wokflowId
+	 * @param userId
 	 * @return user信息
 	 */
 	@RequestMapping("/startProcess/{wokflowId}/{userId}")
 	@ResponseBody
-	public ProcessInstance startProcess(@PathVariable String wokflowId,@PathVariable String userId) {
+	public InstanceVO startProcess(@PathVariable String wokflowId,@PathVariable String userId) {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		//variables.put("userId", userId);
 		ProcessInstance processInstance = activitiService.startProcess(wokflowId,variables);
-		return processInstance;
+		InstanceVO instanceVO = new InstanceVO();
+		instanceVO.setActivityId(processInstance.getActivityId());
+		instanceVO.setDeploymentId(processInstance.getDeploymentId());
+		return instanceVO;
 	}
 	
 	@RequestMapping("/listUI")

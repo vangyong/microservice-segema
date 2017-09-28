@@ -31,8 +31,8 @@ public class ActivitiService {
 	public Deployment deploy(String wokflowId){
 		
 		Deployment deployment = repositoryService.createDeployment()
-			.addClasspathResource("diagrams/leaveBill.bpmn")
-			.addClasspathResource("diagrams/leaveBill.png")
+			.addClasspathResource("diagrams/MyProcess.bpmn")
+			.addClasspathResource("diagrams/MyProcess.png")
 			.deploy();
 			System.out.println("发布成功:"+deployment.getId()+" "+deployment.getName());
 			return deployment;
