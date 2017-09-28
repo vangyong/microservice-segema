@@ -1,7 +1,11 @@
 package cn.segema.cloud.activiti.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -22,8 +26,8 @@ import cn.segema.cloud.activiti.repository.ActivitiUserRepository;
 import cn.segema.cloud.activiti.service.ActivitiService;
 
 @Controller
-@RequestMapping(value = "/test/activiti/user")
-public class ActivitiUserController {
+@RequestMapping(value = "/activiti")
+public class ActivitiController {
 	@Autowired
 	private DiscoveryClient discoveryClient;
 	@Autowired
@@ -32,14 +36,30 @@ public class ActivitiUserController {
 	private ActivitiService activitiService;
 
 	/**
-	 * @param id
+	 * @param userId
+	 * @return Deployment
+	 */
+	@RequestMapping("/deploy/{wokflowId}/{userId}")
+	@ResponseBody
+	public Deployment deploy(@PathVariable String wokflowId,@PathVariable String userId) {
+		
+		Deployment deployment = activitiService.deploy(wokflowId);
+		
+		return deployment;
+	}
+	
+	/**
+	 * @param wokflowId
+	 * @param wokflowId
 	 * @return user信息
 	 */
-	@RequestMapping("/{userId}")
+	@RequestMapping("/startProcess/{wokflowId}/{userId}")
 	@ResponseBody
-	public ActivitiUser findById(@PathVariable Integer userId) {
-		ActivitiUser findOne = this.activitiUserRepository.findOne(userId);
-		return findOne;
+	public ProcessInstance startProcess(@PathVariable String wokflowId,@PathVariable String userId) {
+		Map<String, Object> variables = new HashMap<String, Object>();
+		//variables.put("userId", userId);
+		ProcessInstance processInstance = activitiService.startProcess(wokflowId,variables);
+		return processInstance;
 	}
 	
 	@RequestMapping("/listUI")

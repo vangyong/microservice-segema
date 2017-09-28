@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.activiti.engine.FormService;
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +18,33 @@ import org.springframework.stereotype.Service;
 @Service
 public class ActivitiService {
 
-	// 注入为我们自动配置好的服务
+	@Autowired
+	private RepositoryService repositoryService;
 	@Autowired
 	private RuntimeService runtimeService;
 	@Autowired
 	private TaskService taskService;
+	@Autowired
+	private HistoryService historyService;
+	
+	
+	public Deployment deploy(String wokflowId){
+		
+		Deployment deployment = repositoryService.createDeployment()
+			.addClasspathResource("diagrams/leaveBill.bpmn")
+			.addClasspathResource("diagrams/leaveBill.png")
+			.deploy();
+			System.out.println("发布成功:"+deployment.getId()+" "+deployment.getName());
+			return deployment;
+	}
+	
 
-	// 开始流程，传入申请者的id以及公司的id
-
-	public void startProcess( Long personId, Long compId){
-	 Map<String, Object> variables = new HashMap<String, Object>();
-	 variables.put("personId", personId);
-	 variables.put("compId", compId);
-	 runtimeService.startProcessInstanceByKey("joinProcess", variables);
+	// 发起流程实例
+	public ProcessInstance startProcess(String wokflowId, Map<String, Object> variables){
+		
+		ProcessInstance processInstance =  runtimeService.startProcessInstanceByKey(wokflowId);
+				//runtimeService.startProcessInstanceByKey(wokflowId, variables);
+		return processInstance;
 	}
 	
 	// 获得所有任务别表
