@@ -1,5 +1,5 @@
 server:
-  port: 12003
+  port: 12007
 spring:
   application: 
     name: microservice-activiti-web    # 项目名称尽量用小写
@@ -12,8 +12,8 @@ spring:
     properties: 
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
-  datasource:                           # 指定数据源
-    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_study
+  datasource:                      
+    url: jdbc:mysql://127.0.0.1:3306/microservice_activiti
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
