@@ -1,4 +1,4 @@
-package cn.segema.cloud.mail.service;
+package cn.segema.cloud.mail.config;
 
 import org.springframework.beans.factory.annotation.Value;  
 import org.springframework.stereotype.Component;  

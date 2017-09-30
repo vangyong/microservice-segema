@@ -20,44 +20,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import cn.segema.cloud.mail.service.EmailService;
-import cn.segema.cloud.mail.test.domain.ActivitiUser;
-import cn.segema.cloud.mail.test.repository.ActivitiUserRepository;
 
 @Controller
 @RequestMapping(value = "/mail")
 public class MailController {
 	@Autowired
 	private DiscoveryClient discoveryClient;
-	@Autowired
-	private ActivitiUserRepository activitiUserRepository;
 
 	@Autowired
 	private EmailService emailService;
 
-	/**
-	 * @param id
-	 * @return user信息
-	 */
-	@RequestMapping("/{userId}")
-	@ResponseBody
-	public ActivitiUser findById(@PathVariable Integer userId) {
-		ActivitiUser findOne = this.activitiUserRepository.findOne(userId);
-		return findOne;
-	}
-
-	@RequestMapping("/listUI")
-	public ModelAndView listUI(ActivitiUser user, Model model) {
-		ModelAndView ModelAndView = new ModelAndView("/test/activiti/user/listUI");
-		return ModelAndView;
-	}
 
 	/**
 	 * 测试邮件发送
@@ -195,7 +171,6 @@ public class MailController {
 
 	/**
 	 * 本地服务实例的信息
-	 * 
 	 * @return
 	 */
 	@RequestMapping("/instance-info")
