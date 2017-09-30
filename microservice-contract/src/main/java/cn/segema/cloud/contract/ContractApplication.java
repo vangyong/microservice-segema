@@ -12,17 +12,15 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * 使用@EnableCircuitBreaker注解开启断路器功能
- * @author wangyong
  */
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-@EnableCircuitBreaker
+//@EnableCircuitBreaker
 //@ComponentScan(basePackages = { "cn.segema.cloud" })
 public class ContractApplication {
 	/**
 	 * 通过@LoadBalanced注解开启均衡负载能力.
-	 * @return restTemplate
 	 */
 	@Bean
 	@LoadBalanced

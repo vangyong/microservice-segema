@@ -45,10 +45,23 @@ public class ContractController {
 	public Contract findById(@PathVariable String id) {
 		Contract findOne = this.contractRepository.findOne(id);
 		UserVO userVO = systemFeignHystrixClient.findByIdFeign("1");
-		
+		//System.out.println(userVO.getUserId());
+		//System.out.println(userVO.getUserName());
 		return findOne;
 	}
 
+	/**
+	 * @param id
+	 * @return 用户信息
+	 */
+	@GetMapping("/user/{id}")
+	public UserVO findUserById(@PathVariable String id) {
+		UserVO userVO = systemFeignHystrixClient.findByIdFeign("1");
+		//System.out.println(userVO.getUserId());
+		//System.out.println(userVO.getUserName());
+		return userVO;
+	}
+	
 	/**
 	 * 通过参数生成Pageable对象
 	 * @param page

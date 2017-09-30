@@ -12,8 +12,8 @@ import cn.segema.cloud.contract.service.SystemFeignHystrixClient.SystemHystrixCl
 @FeignClient(name="microservice-system",fallback=SystemHystrixClientFallback.class)
 public interface SystemFeignHystrixClient {
 	
-	@RequestMapping("/user/{id}")
-	public UserVO findByIdFeign(@RequestParam("id") String id);
+	@RequestMapping("/user/{userId}")
+	public UserVO findByIdFeign(@RequestParam("userId") String userId);
 
 	/**
 	 * SpringCloud官方做法， 将fallback类作为内部类放入Feign的接口中，
@@ -24,8 +24,8 @@ public interface SystemFeignHystrixClient {
 		private static final Logger LOGGER = LoggerFactory.getLogger(SystemHystrixClientFallback.class);
 
 		@Override
-		public UserVO findByIdFeign(String id) {
-			LOGGER.info("异常发生，进入fallback方法，接收的参数：id = {}", id);
+		public UserVO findByIdFeign(String userId) {
+			LOGGER.info("异常发生，进入fallback方法，接收的参数：userId = {}", userId);
 			UserVO user = new UserVO();
 			user.setUserId("1");
 			user.setUserName("default username");

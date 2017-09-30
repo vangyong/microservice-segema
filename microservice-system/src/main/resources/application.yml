@@ -3,7 +3,7 @@ server:
 spring:
   application:
     name: microservice-system    # 项目名称尽量用小写
-  jpa:
+  jpa: 
     database: MYSQL
     generate-ddl: false
     show-sql: true
@@ -17,17 +17,17 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
-  redis: 
-    database: 0
-    host: 127.0.0.1
-    port: 6379
-    password: 123456
-    pool: 
-      max-active: 8
-      max-wait: -1
-      max-idle: 8
-      min-idle: 0
-    timeout: 0
+#  redis: 
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    password: 123456
+#    pool: 
+#      max-active: 8
+#      max-wait: -1
+#      max-idle: 8
+#      min-idle: 0
+#    timeout: 0
 logging:
   level:
     root: INFO

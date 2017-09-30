@@ -38,8 +38,7 @@
 | microservice-api-gateway                 | 8040 | API Gateway             | 详见文章                  |
 | microservice-config                      | 8050 | 配置服务                                  | 详见文章                 |
 | microservice-discovery                   | 8761 | 注册中心                                  | /               |
-| microservice-hystrix-dashboard           | 8030 | hystrix监控                            | /hystrix.stream |
-| microservice-hystrix-turbine             | 8031 | turbine                  | /turbine.stream |
+| microservice-hystrix-turbine             | 8030 | hystrix-turbine监控            | /turbine.stream |
 | microservice-system                      | 12000 | 系统管理服务提供者               | /1              |
 | microservice-system-web                  | 12001 | 系统管理服务消费者               | /1              |
 | microservice-contract                    | 12002 | 合同管理服务提供者               | /1              |

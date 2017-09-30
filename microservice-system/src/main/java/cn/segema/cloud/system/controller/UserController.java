@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.segema.cloud.system.common.Pager;
+import cn.segema.cloud.common.page.Pager;
 import cn.segema.cloud.system.domain.User;
 import cn.segema.cloud.system.repository.UserRepository;
 import cn.segema.cloud.system.vo.UserPersonalVO;
@@ -30,26 +31,21 @@ public class UserController {
   private DiscoveryClient discoveryClient;
   @Autowired
   private UserRepository userRepository;
+  
+  @Autowired
+  private RedisTemplate redisTemplate;
 
   /**
-   * 注：@GetMapping("/{id}")是spring 4.3的新注解等价于：
-   * @RequestMapping(value = "/id", method = RequestMethod.GET)
-   * 类似的注解还有@PostMapping等等
    * @param id
    * @return user信息
+ * @throws Exception 
    */
   @GetMapping("/{userId}")
-  public User findById(@PathVariable String userId) {
+  public User findById(@PathVariable String userId) throws Exception {
     User findOne = this.userRepository.findOne(userId);
-    //插入测试数据
-    User user = new User();
-    user.setUserId(UUID.randomUUID().toString());
-    user.setUserName("王勇");
-	user.setMobileNumber("18682561280");
-	user.setNickName("jessse");
-	userRepository.save(user);
+    Exception e = new Exception();
+    throw e;
     
-    return findOne;
   }
   
   @GetMapping("/list")
