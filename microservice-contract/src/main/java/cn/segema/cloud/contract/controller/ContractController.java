@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
 import cn.segema.cloud.contract.domain.Contract;
 import cn.segema.cloud.contract.repository.ContractRepository;
+import cn.segema.cloud.contract.service.SystemFeignHystrixClient;
 import cn.segema.cloud.contract.vo.UserVO;
 
 /**
@@ -35,6 +35,9 @@ public class ContractController {
 	
 //	@Autowired
 //	private UserRepository userRepository;
+	
+	@Autowired
+	private SystemFeignHystrixClient systemFeignHystrixClient;
 
 	/**
 	 * @param id
@@ -43,20 +46,9 @@ public class ContractController {
 	@GetMapping("/{id}")
 	public Contract findById(@PathVariable String id) {
 		Contract findOne = this.contractRepository.findOne(id);
-		//User user = userRepository.findOne("1");
+		UserVO userVO = systemFeignHystrixClient.findByIdFeign("1");
 		
 		return findOne;
-	}
-
-	/**
-	 * 本地服务实例的信息
-	 * 
-	 * @return
-	 */
-	@GetMapping("/instance-info")
-	public ServiceInstance showInfo() {
-		ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
-		return localServiceInstance;
 	}
 
 	/**
@@ -94,5 +86,13 @@ public class ContractController {
 		return findOne;
 	}
 	
-
+	/**
+	 * 本地服务实例的信息
+	 * @return
+	 */
+	@GetMapping("/instance-info")
+	public ServiceInstance showInfo() {
+		ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
+		return localServiceInstance;
+	}
 }
