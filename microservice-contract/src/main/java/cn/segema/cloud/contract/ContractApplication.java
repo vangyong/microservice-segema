@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-//@EnableCircuitBreaker
+@EnableCircuitBreaker
 //@ComponentScan(basePackages = { "cn.segema.cloud" })
 public class ContractApplication {
 	/**
