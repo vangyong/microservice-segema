@@ -28,6 +28,11 @@ public class ActivitiService {
 	private HistoryService historyService;
 	
 	
+	/**
+	 * 部署流程
+	 * @param wokflowId
+	 * @return
+	 */
 	public Deployment deploy(String wokflowId){
 		
 		Deployment deployment = repositoryService.createDeployment()

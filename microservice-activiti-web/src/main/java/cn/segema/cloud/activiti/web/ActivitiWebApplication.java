@@ -1,6 +1,5 @@
 package cn.segema.cloud.activiti.web;
 
-import org.activiti.modeler.JsonpCallbackFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,10 +21,6 @@ public class ActivitiWebApplication extends WebMvcConfigurerAdapter {
     SpringApplication.run(ActivitiWebApplication.class, args);
   }
   
-  @Bean
-	public JsonpCallbackFilter filter(){
-		return new JsonpCallbackFilter();
-	}
   
 }
 

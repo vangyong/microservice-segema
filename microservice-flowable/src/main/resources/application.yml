@@ -24,8 +24,8 @@ spring:
 #      firstname: Test
 #      lastname: Administrator
       
-#flowable: 
-#  check-process-definitions: false
+flowable: 
+  check-process-definitions: false
     
 #  thymeleaf:
 #        cache: false
