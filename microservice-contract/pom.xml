@@ -34,7 +34,8 @@
 	      <groupId>org.springframework.cloud</groupId>
 	      <artifactId>spring-cloud-starter-feign</artifactId>
 	    </dependency>
-    
+    	
+    	<!-- feign中自带了hystrix， 这里使用hystrix-metrics-event-stream，用于dashboard -->
 	    <dependency>
 	     <groupId>org.springframework.cloud</groupId>
 	     <artifactId>spring-cloud-starter-hystrix</artifactId>
