@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.segema.cloud.demo.common.Pager;
+import cn.segema.cloud.common.page.Pager;
 import cn.segema.cloud.demo.domain.DemoUser;
 import cn.segema.cloud.demo.repository.DemoRepository;
 import cn.segema.cloud.demo.vo.DemoUserPersonalVO;
@@ -85,14 +85,7 @@ public class DemoController {
 	  List<DemoUserPersonalVO> userList = demoRepository.findUserPersonalByUserName(userName);
 	  return userList;
 	}
-  
-  
-//  @GetMapping("/listByPage/{page}/{size}")
-//	public Page<User> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
-//		Sort sort = new Sort(Direction.DESC, "userId");
-//		Pageable pageable = new PageRequest(page, size, sort);
-//		return userRepository.findAll(pageable);
-//	}
+ 
   @GetMapping("/listByPage")
 	public Pager<DemoUser> listByPage() {
 		Sort sort = new Sort(Direction.DESC, "userId");

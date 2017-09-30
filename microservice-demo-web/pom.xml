@@ -34,6 +34,11 @@
      <artifactId>spring-cloud-starter-hystrix</artifactId>
    </dependency>
     
+    <dependency>
+  		<groupId>cn.segema.cloud</groupId>
+   		<artifactId>microservice-common</artifactId>
+   		<version>0.0.1-SNAPSHOT</version>  
+   </dependency>
 
   </dependencies>
 </project>
