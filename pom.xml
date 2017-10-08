@@ -14,6 +14,7 @@
     <module>microservice-hystrix-turbine</module>
     <module>microservice-config</module>
     <module>microservice-api-gateway</module>
+    <module>microservice-auth</module>
     <module>microservice-common</module>
     <module>microservice-filecenter</module>
     <module>microservice-system</module>
