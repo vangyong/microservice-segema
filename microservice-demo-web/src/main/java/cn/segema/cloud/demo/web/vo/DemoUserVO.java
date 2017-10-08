@@ -2,7 +2,7 @@ package cn.segema.cloud.demo.web.vo;
 
 import java.io.Serializable;
 
-public class UserVO implements Serializable{
+public class DemoUserVO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 

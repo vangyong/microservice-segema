@@ -31,12 +31,9 @@ public class DemoController {
   @Autowired
   private DemoRepository demoRepository;
 
-
   @GetMapping("/{userId}")
   public DemoUser findById(@PathVariable String userId) {
     DemoUser findOne = this.demoRepository.findOne(userId);
-  
-    
     return findOne;
   }
   

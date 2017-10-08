@@ -1,5 +1,5 @@
 server:
-  port: 12001
+  port: 13015
 spring:
   application:
     name: microservice-demo    # 项目名称尽量用小写

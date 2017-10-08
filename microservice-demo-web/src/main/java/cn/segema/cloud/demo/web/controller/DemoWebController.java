@@ -10,18 +10,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.segema.cloud.common.page.Pager;
 import cn.segema.cloud.demo.web.service.DemoWebService;
-import cn.segema.cloud.demo.web.vo.UserVO;
+import cn.segema.cloud.demo.web.vo.DemoUserVO;
 
 @Controller
-@RequestMapping(value = "/user/web")
+@RequestMapping(value = "/demo/web")
 public class DemoWebController {
 	
 	@Autowired
 	private DemoWebService userWebService;
     
-    @RequestMapping("/listByPageable")
+	/**
+	 * 分页查询
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+    @RequestMapping("/listByPage")
     @ResponseBody
-	public Pager<UserVO> listByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
+	public Pager<DemoUserVO> listByPage(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "size", defaultValue = "5") Integer size) {
 		//Sort sort = new Sort(Direction.DESC, "userId");
 		//Pageable pageable = new PageRequest(page, size, sort);
