@@ -12,7 +12,7 @@ spring:
     properties: 
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
-  datasource:                           # 指定数据源
+  datasource:                           # 指定mysql数据源
     url: jdbc:mysql://127.0.0.1:3306/microservice_demo
     driverClassName: com.mysql.jdbc.Driver
     username: root  
@@ -28,6 +28,13 @@ spring:
 #      max-idle: 8
 #      min-idle: 0
 #    timeout: 0
+
+#rabbitmq: 
+#     addresses: 127.0.0.1:5672
+#     username: guest
+#     password: guest
+#     virtual-host: / 
+
 logging:
   level:
     root: INFO
@@ -40,5 +47,6 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/    # 指定注册中心的地址
   instance:
+    hostname: demo
     preferIpAddress: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}

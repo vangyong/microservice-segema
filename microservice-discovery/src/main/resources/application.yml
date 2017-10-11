@@ -4,7 +4,7 @@ eureka:
   instance:
     hostname: discovery
   client: 
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: false    #是否注册自身到eureka服务器
+    fetchRegistry: false         #是否从eureka服务器获取注册信息
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

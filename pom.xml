@@ -14,19 +14,17 @@
     <module>microservice-hystrix-turbine</module>
     <module>microservice-config</module>
     <module>microservice-api-gateway</module>
-    <module>microservice-auth</module>
+    <module>microservice-auth-server</module>
     <module>microservice-common</module>
     <module>microservice-filecenter</module>
     <module>microservice-system</module>
     <module>microservice-system-web</module>
     <module>microservice-contract</module>
     <module>microservice-contract-web</module>
-    <module>microservice-rabbitmq</module>
-    <module>microservice-rabbitmq2</module>
     <module>microservice-elasticsearch</module>
+    <module>microservice-shrio</module>
     <module>microservice-activiti</module>
     <module>microservice-activiti-web</module>
-    <module>microservice-flowable</module>
     <module>microservice-mail</module>
     <module>microservice-performance</module>
     
@@ -49,7 +47,7 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Dalston.SR2</version>
+        <version>Dalston.SR4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

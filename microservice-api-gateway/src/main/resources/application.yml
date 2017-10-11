@@ -5,13 +5,18 @@ server:
   port: 8040
 eureka:
   instance:
-    hostname: gateway
+    hostname: api-gateway
   client:
     serviceUrl: 
       defaultZone: http://discovery:8761/eureka/  
 zuul:
-  ignored-services: microservice-provider-user                        # 需要忽视的服务(配置后将不会被路由)
+  ignored-services: '*'                        # 需要忽视的服务(配置后将不会被路由)
   routes:
+    auth-server:
+      path: /uaa/**
+      serviceId: auth-server
+      sensitiveHeaders:
+      strip-prefix: false
     system:                                                           # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
       path: /system/**                                                # 想要映射到的路径
       service-id: microservice-system                                 # Eureka中的serviceId
@@ -21,4 +26,7 @@ zuul:
     contract:                                                         # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
       path: /contract/**                                                # 想要映射到的路径
       service-id: microservice-contract                                 # Eureka中的serviceId
+    demo:                                                           
+      path: /demo/**                                               
+      service-id: microservice-demo                                
       

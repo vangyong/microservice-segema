@@ -12,6 +12,8 @@ spring:
           username: vangyong
           password: wy513288
 eureka:
+  instance:
+    hostname: config
   client:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/
