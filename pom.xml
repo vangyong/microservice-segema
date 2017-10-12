@@ -10,7 +10,6 @@
 
   <modules>
     <module>microservice-discovery</module>
-    <module>microservice-hystrix-dashboard</module>
     <module>microservice-hystrix-turbine</module>
     <module>microservice-config</module>
     <module>microservice-api-gateway</module>
@@ -22,9 +21,8 @@
     <module>microservice-contract</module>
     <module>microservice-contract-web</module>
     <module>microservice-elasticsearch</module>
-    <module>microservice-shrio</module>
+    <module>microservice-shiro</module>
     <module>microservice-activiti</module>
-    <module>microservice-activiti-web</module>
     <module>microservice-mail</module>
     <module>microservice-performance</module>
     
@@ -34,7 +32,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.7.RELEASE</version>
+    <version>1.5.6.RELEASE</version>
   </parent>
 
   <properties>

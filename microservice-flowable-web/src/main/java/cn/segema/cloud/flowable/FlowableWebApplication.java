@@ -12,6 +12,8 @@ public class FlowableWebApplication {
     SpringApplication.run(FlowableWebApplication.class, args);
   }
   
+  
+  
 //  @Bean  
 //  public ServletListenerRegistrationBean<org.flowable.app.servlet.WebConfigurer> webConfigurerRegistration(){  
 //      ServletListenerRegistrationBean<org.flowable.app.servlet.WebConfigurer> registration = new ServletListenerRegistrationBean<org.flowable.app.servlet.WebConfigurer>(new org.flowable.app.servlet.WebConfigurer());  
