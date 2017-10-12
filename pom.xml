@@ -20,6 +20,8 @@
     <module>microservice-system-web</module>
     <module>microservice-contract</module>
     <module>microservice-contract-web</module>
+    <module>microservice-flowable</module>
+    <module>microservice-flowable-web</module>
     <module>microservice-elasticsearch</module>
     <module>microservice-shiro</module>
     <module>microservice-activiti</module>
