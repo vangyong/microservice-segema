@@ -33,6 +33,9 @@ public class User {
 	
 	@Column(name = "CREDENTIALSSALT")
 	private String credentialsSalt;
+	
+	@Column(name = "DELETESTATUS")
+	private Integer deletestatus;
 
 	public String getUserId() {
 		return userId;
@@ -80,6 +83,14 @@ public class User {
 
 	public void setCredentialsSalt(String credentialsSalt) {
 		this.credentialsSalt = credentialsSalt;
+	}
+
+	public Integer getDeletestatus() {
+		return deletestatus;
+	}
+
+	public void setDeletestatus(Integer deletestatus) {
+		this.deletestatus = deletestatus;
 	}
 
 }

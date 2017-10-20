@@ -8,39 +8,39 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * 角色-资源关系
+ * 用户-资源关系
  * @author wangyong
  *
  */
-@Table(name = "SYS_ROLE_RESOURCE")
+@Table(name = "SYS_USER_RESOURCE")
 @Entity
-public class RoleResource {
+public class UserResource {
 	@Id
-	@Column(name = "ROLERESOURCEID")
-	private String roleResourceId;
+	@Column(name = "USERRESOURCEID")
+	private String userResourceId;
 
 	@OneToOne
-	@JoinColumn(name = "ROLEID")
-	private Role role;
+	@JoinColumn(name = "USERID")
+	private User user;
 
 	@OneToOne
 	@JoinColumn(name = "RESOURCEID")
 	private Resource resource;
 
-	public String getRoleResourceId() {
-		return roleResourceId;
+	public String getUserResourceId() {
+		return userResourceId;
 	}
 
-	public void setRoleResourceId(String roleResourceId) {
-		this.roleResourceId = roleResourceId;
+	public void setUserResourceId(String userResourceId) {
+		this.userResourceId = userResourceId;
 	}
 
-	public Role getRole() {
-		return role;
+	public User getUser() {
+		return user;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Resource getResource() {
@@ -50,7 +50,5 @@ public class RoleResource {
 	public void setResource(Resource resource) {
 		this.resource = resource;
 	}
-
-	
 
 }
