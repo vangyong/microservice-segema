@@ -16,7 +16,7 @@ spring:
         dialect : org.hibernate.dialect.MySQL5Dialect  
         format_sql: true
   datasource:                           # 指定数据源
-     url: jdbc:mysql://127.0.0.1:3306/spring_cloud_study
+     url: jdbc:mysql://127.0.0.1:3306/microservice_contract?useUnicode=true&characterEncoding=utf8
      driverClassName: com.mysql.jdbc.Driver
      username: root  
      password: root

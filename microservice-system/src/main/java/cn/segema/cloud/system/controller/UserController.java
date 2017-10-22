@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.segema.cloud.common.page.Pager;
+import cn.segema.cloud.common.page.PagerParamVO;
 import cn.segema.cloud.system.domain.User;
 import cn.segema.cloud.system.repository.UserRepository;
 import cn.segema.cloud.system.vo.UserPersonalVO;
@@ -77,10 +78,10 @@ public class UserController {
 	  return userList;
 	}
   
-  @GetMapping("/listByPage/{curr}/{nums}")
-	public Pager<User> listByPage(@PathVariable Integer curr,@PathVariable Integer nums) {
+  @GetMapping("/listByPage")
+	public Pager<User> listByPage(PagerParamVO pagerParam) {
 		Sort sort = new Sort(Direction.DESC, "userId");
-		Pageable pageable = new PageRequest(curr, nums, sort);
+		Pageable pageable = new PageRequest(pagerParam.getCurr()-1, pagerParam.getNums(), sort);
 		Page<User> page = userRepository.findAll(pageable);
 		Pager<User> pager = new Pager<User>();
 		pager.setCode("0");

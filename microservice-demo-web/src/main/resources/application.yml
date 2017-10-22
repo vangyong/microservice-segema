@@ -13,7 +13,7 @@ spring:
 #    schema: classpath:schema.sql        # 指定h2数据库的建表脚本
 #    data: classpath:data.sql            # 指定h2数据库的insert脚本
 #  datasource:                           # 指定数据源
-#    url: jdbc:mysql://127.0.0.1:3306/microservice_demo
+#    url: jdbc:mysql://127.0.0.1:3306/microservice_demo?useUnicode=true&characterEncoding=utf8
 #    driverClassName: com.mysql.jdbc.Driver
 #    username: root  
 #    password: root 
