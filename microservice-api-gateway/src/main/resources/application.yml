@@ -6,6 +6,8 @@ server:
 eureka:
   instance:
     hostname: api-gateway
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
   client:
     serviceUrl: 
       defaultZone: http://discovery:8761/eureka/  

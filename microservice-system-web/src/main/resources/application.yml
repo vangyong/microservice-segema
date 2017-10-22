@@ -2,17 +2,21 @@ server:
   port: 12001
 spring:
   application:
-    name: microservice-system-web    # 项目名称尽量用小写
-  jpa:
+    name: microservice-system-web
+  jpa: 
+    database: MYSQL
     generate-ddl: false
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+    properties: 
+      hibernate: 
+        dialect : org.hibernate.dialect.MySQL5Dialect
   datasource:                           # 指定数据源
     url: jdbc:mysql://127.0.0.1:3306/microservice_system
     driverClassName: com.mysql.jdbc.Driver
     username: root  
-    password: root 
+    password: root
 logging: 
   level:
     root: INFO
