@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,20 +31,14 @@ public class UserController {
   @Autowired
   private UserRepository userRepository;
   
-//  @Autowired
-//  private RedisTemplate redisTemplate;
-
   /**
    * @param id
    * @return user信息
- * @throws Exception 
    */
   @GetMapping("/{userId}")
   public User findById(@PathVariable String userId) throws Exception {
-    User findOne = this.userRepository.findOne(userId);
-    Exception e = new Exception();
-    throw e;
-    
+    User user = this.userRepository.findOne(userId);
+    return user;
   }
   
   @GetMapping("/list")
@@ -84,13 +77,6 @@ public class UserController {
 	  return userList;
 	}
   
-  
-//  @GetMapping("/listByPage/{page}/{size}")
-//	public Page<User> listByPage(@PathVariable Integer page,@PathVariable Integer size) {
-//		Sort sort = new Sort(Direction.DESC, "userId");
-//		Pageable pageable = new PageRequest(page, size, sort);
-//		return userRepository.findAll(pageable);
-//	}
   @GetMapping("/listByPage")
 	public Pager<User> listByPage() {
 		Sort sort = new Sort(Direction.DESC, "userId");

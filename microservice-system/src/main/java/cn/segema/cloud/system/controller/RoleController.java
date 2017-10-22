@@ -60,8 +60,6 @@ public class RoleController {
 	@RequestMapping(value = "edit")
 	public Role edit(Role role, Model model) {
 		Long a = 2L;
-		
-		
 		roleRepository.save(role);
 		return role;
 	}

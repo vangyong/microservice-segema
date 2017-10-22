@@ -1,5 +1,10 @@
 package cn.segema.cloud.system.vo;
 
+/**
+ * 用户人员信息
+ * @author wangyong
+ *
+ */
 public class UserPersonalVO {
 
 	private String userId;
