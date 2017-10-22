@@ -77,10 +77,10 @@ public class UserController {
 	  return userList;
 	}
   
-  @GetMapping("/listByPage")
-	public Pager<User> listByPage() {
+  @GetMapping("/listByPage/{curr}/{nums}")
+	public Pager<User> listByPage(@PathVariable Integer curr,@PathVariable Integer nums) {
 		Sort sort = new Sort(Direction.DESC, "userId");
-		Pageable pageable = new PageRequest(0, 30, sort);
+		Pageable pageable = new PageRequest(curr, nums, sort);
 		Page<User> page = userRepository.findAll(pageable);
 		Pager<User> pager = new Pager<User>();
 		pager.setCode("0");

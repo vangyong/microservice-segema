@@ -2,8 +2,6 @@ package cn.segema.cloud.system.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -33,6 +31,9 @@ public class User {
 	
 	@Column(name = "CREDENTIALSSALT")
 	private String credentialsSalt;
+	
+	@Column(name = "GENDER")
+	private Integer gender;
 	
 	@Column(name = "DELETESTATUS")
 	private Integer deletestatus;
@@ -83,6 +84,14 @@ public class User {
 
 	public void setCredentialsSalt(String credentialsSalt) {
 		this.credentialsSalt = credentialsSalt;
+	}
+	
+	public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
 	}
 
 	public Integer getDeletestatus() {

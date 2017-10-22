@@ -1,73 +1,87 @@
 <!DOCTYPE html>
-<html lang="ZH">
-<head>
-<meta charset="UTF-8">
-<!-- <meta http-equiv="content-language" content="zh-CN" /> -->
-<title>userlist</title>
-<link rel="stylesheet" href="../../../plugins/element-ui/theme-default/index.css">
-<script src="../../../plugins/vue-2.4.2/vue.js"></script>
-<script src="../../../plugins/element-ui/index.js"></script>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../../plugins/layui-2.1.3/css/layui.css" media="all">
+  </head>
+  <body>
+    <div class="tab-body">
+      <p class="page-tab">
+        <span class="layui-breadcrumb" lay-separator=">"></span></p>
+      <div class="handle-box">
+        <ul>
+          <li class="handle-item"><span class="layui-form-label">用户名：</span>
+            <div class="layui-input-inline"><input type="text" autocomplete="off" placeholder="请输入搜索条件" class="layui-input"></div>
+            <button class="layui-btn mgl-20" id="btn-queryuser">查询</button>
+            <span class="fr">
+            <a class="layui-btn layui-btn-danger radius btn-delect" id="btn-deleteuser">
+            <i class="linyer icon-delect"></i> 删除</a>
+            <a class="layui-btn btn-add btn-default" id="btn-adduser">
+            <i class="linyer icon-add"></i> 添加</a>
+            <a class="layui-btn btn-show btn-default" id="btn-viewuser">
+            <i class="linyer icon-add"></i> 查看</a>
+            </span>
+           </li>
+        </ul>
+      </div>
+      <div class="layui-clear">
+        <div class="tableTools fr"></div>
+      </div>
+    </div>
+	<table id="userTable"></table>
+    
+    <script src="../../../plugins/layui-2.1.3/layui.js"></script>
+    <script>
+    		layui.use(['layer','table'], function(){
+		  var $ = layui.jquery,
+		  	table = layui.table,
+		  	layer = layui.layer;
+		  	table.render({
+			    elem: '#userTable',
+			   // data:[],
+			    height: 372,
+			    url: '/system/user/listByPage',
+			    request:{
+			    		pageName:'curr',
+			    		limitName:'nums'
+			    },
+			    cols: [[ //标题栏
+			      {checkbox: true, LAY_CHECKED: false}, //默认全选
+			      {field: 'userId', title: 'ID', width: '120', sort: true},
+			      {field: 'userName', title: '用户名', width: '120', sort: true},
+			      {field: 'nickName', title: '昵称', width: '120', sort: true},
+			      {field: 'password', title: '密码', width: '120', sort: true},
+			      {field: 'gender', title: '性别', width: '120', sort: true},
+			      {field: 'mobileNumber', title: '手机号码', width:'150', sort: true}
+			    ]], 
+			    skin: 'row', //表格风格
+			    even: true,
+			    page: true, //是否显示分页
+			    limits: [5, 10, 20,40],
+			    limit: 5 //每页默认显示的数量
+			});
+		  	
+		  	$("#btn-queryuser").on('click', function() {
+    		    		alert("refresh table");	
+    		  	});
+		  	
+		  	$("#btn-adduser").on('click', function() {
+	    		    layer.open({
+	    		    	  type: 2,
+	    		    	  area: ['700px', '450px'],
+	    		    	  fixed: false,
+	    		    	  maxmin: true,
+	    		    	  content: '/system-web/html/system/user/useradd.html'
+	    		    	});
+	    		  });
+			
+   	 	});
+    		
+	</script>
+  </body>
 
-<style>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-  }
-</style>
-</head>
-<body>
-<div id="app">
-	<el-radio-group v-model="isCollapse" style="margin-bottom: 10px;">
-	  <el-radio-button :label="false" >展开</el-radio-button>
-	  <el-radio-button :label="true" >收起</el-radio-button>
-	</el-radio-group>
-	<el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-	  <el-submenu index="1">
-	    <template slot="title">
-	      <i class="el-icon-menu"></i>
-	      <span slot="title">系统管理</span>
-	    </template>
-	   <el-menu-item index="1-1" @click="handleSelect" >用户管理</el-menu-item>
-	   <el-menu-item index="1-2"><a href="https://www.ele.me" target="_blank" style="text-decoration:none">角色管理</a></el-menu-item>
-	   <el-menu-item index="1-3">资源管理</el-menu-item>
-	   <el-menu-item index="1-4">组织管理</el-menu-item>
-	   <el-menu-item index="1-5">岗位管理</el-menu-item>
-	  </el-submenu>
-	  <el-submenu index="2">
-	    <template slot="title">
-	      <i class="el-icon-setting"></i>
-	      <span slot="title">配置管理</span>
-	    </template>
-	   <el-menu-item index="2-1">邮件配置</el-menu-item>
-	   <el-menu-item index="2-2">短信配置</el-menu-item>
-	   <el-menu-item index="2-3">推送配置</el-menu-item>
-	  </el-submenu>
-	</el-menu>
-	
-	
-	
-</div>
-<script>
-
-
-
-new Vue({
-    el: '#app',
-    data: {
-  	    isCollapse:true
-    },
-	methods: {
-		 handleOpen(key, keyPath) {
-	        console.log(key, keyPath);
-	      },
-	      handleClose(key, keyPath) {
-	        console.log(key, keyPath);
-	      },
-	      handleSelect(key, keyPath){
-	    	  console.log(key, keyPath);
-	      }
-	  }
-	})
-</script>
-</body>
 </html>
