@@ -12,21 +12,27 @@ eureka:
 zuul:
   ignored-services: '*'                        # 需要忽视的服务(配置后将不会被路由)
   routes:
-    auth-server:
-      path: /uaa/**
-      serviceId: auth-server
-      sensitiveHeaders:
-      strip-prefix: false
+#    auth-server:
+#      path: /uaa/**
+#      serviceId: auth-server
+#      sensitiveHeaders:
+#      strip-prefix: false
     system:                                                           # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
       path: /system/**                                                # 想要映射到的路径
       service-id: microservice-system                                 # Eureka中的serviceId
     system-web: 
       path: /system-web/**         
       service-id: microservice-system-web
-    contract:                                                         # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
-      path: /contract/**                                                # 想要映射到的路径
-      service-id: microservice-contract                                 # Eureka中的serviceId
+    contract:                                                         
+      path: /contract/**                                               
+      service-id: microservice-contract  
+    contract-web:                                                        
+      path: /contract-web/**                                               
+      service-id: microservice-contract-web                             
     demo:                                                           
       path: /demo/**                                               
-      service-id: microservice-demo                                
+      service-id: microservice-demo   
+    demo-web:                                                           
+      path: /demo-web/**                                               
+      service-id: microservice-demo-web                               
       
