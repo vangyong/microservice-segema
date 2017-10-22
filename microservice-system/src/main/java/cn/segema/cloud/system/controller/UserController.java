@@ -32,8 +32,8 @@ public class UserController {
   @Autowired
   private UserRepository userRepository;
   
-  @Autowired
-  private RedisTemplate redisTemplate;
+//  @Autowired
+//  private RedisTemplate redisTemplate;
 
   /**
    * @param id
