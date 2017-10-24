@@ -93,6 +93,7 @@
 			                	 	parent.window.location.href="/system-web/html/system/user/userlist.html";
 			                 	var index = parent.layer.getFrameIndex(window.name);
 			                 	parent.layer.close(index);
+			                     return false;
 			                },
 			                error: function(data) {
 			                	 	layer.msg("网络错误");
