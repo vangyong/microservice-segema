@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="../../../plugins/layui-2.1.3/css/layui.css" media="all">
   </head>
   <body>
-    <div class="tab-body">
-      <p class="page-tab">
-        <span class="layui-breadcrumb" lay-separator=">"></span></p>
+    <div class="tab-body" style="margin:10px">
       <div class="handle-box">
         <ul>
           <li class="handle-item"><span class="layui-form-label">用户名：</span>
@@ -30,22 +28,26 @@
            </li>
         </ul>
       </div>
-      <div class="layui-clear">
-        <div class="tableTools fr"></div>
-      </div>
+      <div id="userTable"></div>
     </div>
-	<table id="userTable"></table>
     
+    <script src="../../../plugins/jquery-1.11.0/jquery-1.11.0.min.js"></script>
     <script src="../../../plugins/layui-2.1.3/layui.js"></script>
+    <script src="../../../plugins/jquery-serializejson/jquery.serializejson.js"></script>
     <script>
-    		layui.use(['layer','table'], function(){
+    	layui.use(['layer','form','laydate','table','carousel', 'upload', 'element'], function(){
 		  var $ = layui.jquery,
+		  	layer = layui.layer,
+		  	form = layui.form,
+		  	laydate = layui.laydate,
 		  	table = layui.table,
-		  	layer = layui.layer;
+		  	carousel = layui.carousel,
+		  	upload = layui.upload,
+		  	element = layui.element;
 		  	table.render({
 			    elem: '#userTable',
 			   // data:[],
-			    height: 372,
+			    height: 472,
 			    url: '/system/user/listByPage',
 			    request:{
 			    		pageName:'curr',
@@ -64,22 +66,52 @@
 			    even: true,
 			    page: true, //是否显示分页
 			    limits: [5, 10, 20,40],
-			    limit: 5 //每页默认显示的数量
+			    limit: 10 //每页默认显示的数量
 			});
 		  	
+		  	//查询
 		  	$("#btn-queryuser").on('click', function() {
     		    		alert("refresh table");	
-    		  	});
-		  	
+    		});
+		    //新增
 		  	$("#btn-adduser").on('click', function() {
-	    		    layer.open({
-	    		    	  type: 2,
-	    		    	  area: ['700px', '450px'],
-	    		    	  fixed: false,
-	    		    	  maxmin: true,
-	    		    	  content: '/system-web/html/system/user/useradd.html'
-	    		    	});
-	    		});
+    		    layer.open({
+    		    	  type: 2,
+    		    	  area: ['700px', '450px'],
+    		    	  fixed: false,
+    		    	  maxmin: true,
+    		    	  content: '/system-web/html/system/user/useradd.html',
+    		    	  btn: ['提交', '全部关闭'],
+    		    	  btnAlign: 'c',
+    		    	  btn1: function(){
+    		    		  alert("网络错误");
+    		    		  alert($("#useradd-form").serializeJSON());
+    		    		  $.ajax({
+  			                type: "POST",
+  			                dataType: "json",
+  			                url: "/system/user/add",
+  			                data: $("#useradd-form").serializeJSON(),
+  			                success: function (obj) {
+  			                	parent.window.location.href="/system-web/html/system/user/userlist.html";
+  			                 	var index = parent.layer.getFrameIndex(window.name);
+  			                 	parent.layer.close(index);
+  			                    // return false;
+  			                },
+  			                error: function(data) {
+  			                	 	layer.msg("网络错误");
+  			                }
+  			            });
+    		    		  
+	    	          },
+	    	          btn2: function(){
+	    	             layer.closeAll();
+	    	          },
+	    	          zIndex: layer.zIndex, 
+	    	          success: function(layero){
+	    	          	layer.setTop(layero);//加载完成后置顶
+	    	          }
+    		    	});
+	    	});
 		  	
 		  	$("#btn-deleteuser").on('click', function() {
     		   
@@ -100,6 +132,9 @@
   			});
 			
    	 	});
+    	
+    	
+    	
     		
 	</script>
   </body>
