@@ -39,7 +39,16 @@ public class UserController {
   @GetMapping("/{userId}")
   public User findById(@PathVariable String userId) throws Exception {
     User user = this.userRepository.findOne(userId);
-    return user;
+    
+    try{
+    		throw new Exception("aaa");
+    }catch (java.lang.ArithmeticException e){
+        System.out.println("testEx2, catch exception");
+        throw new Exception("aaa");
+    }finally{
+        System.out.println("finally!");
+        //return user;
+    }
   }
   
   @GetMapping("/list")

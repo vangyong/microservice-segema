@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-//@ComponentScan(basePackages = { "cn.segema.cloud" })
 public class BroadcastApplication {
 	/**
 	 * 通过@LoadBalanced注解开启均衡负载能力.

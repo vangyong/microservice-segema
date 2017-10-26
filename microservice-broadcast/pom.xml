@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>microservice-broadcast</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<parent>
 		<groupId>cn.segema.cloud</groupId>
@@ -25,26 +25,27 @@
 			<groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		
 		 <dependency>
-	      <groupId>org.springframework.cloud</groupId>
-	      <artifactId>spring-cloud-starter-feign</artifactId>
+	      	<groupId>org.springframework.cloud</groupId>
+	      	<artifactId>spring-cloud-starter-feign</artifactId>
 	    </dependency>
     	
-    	<!-- feign中自带了hystrix， 这里使用hystrix-metrics-event-stream，用于dashboard -->
+    	    <!-- feign中自带了hystrix,这里使用hystrix-metrics-event-stream，用于dashboard -->
 	    <dependency>
-	     <groupId>org.springframework.cloud</groupId>
-	     <artifactId>spring-cloud-starter-hystrix</artifactId>
-	   </dependency>
+	         <groupId>org.springframework.cloud</groupId>
+	         <artifactId>spring-cloud-starter-hystrix</artifactId>
+	    </dependency>
 		
 		<dependency>
 			<groupId>cn.segema.cloud</groupId>
 			<artifactId>microservice-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 
 	</dependencies>

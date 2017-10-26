@@ -1,5 +1,5 @@
 server:
-  port: 12002
+  port: 12013
 spring:
   application:
     name: microservice-broadcast
@@ -9,11 +9,10 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      #naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties: 
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect  
-  datasource:                           # 指定数据源
+  datasource: 
      url: jdbc:mysql://127.0.0.1:3306/microservice_broadcast?useUnicode=true&characterEncoding=utf8
      driverClassName: com.mysql.jdbc.Driver
      username: root
@@ -24,13 +23,17 @@ logging:
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
-    com.itmuch.youran.persistence: ERROR
+    #com.itmuch.youran.persistence: ERROR
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/    # 指定注册中心的地址
+      defaultZone: http://discovery:8761/eureka/
   instance:
     preferIpAddress: true
-ribbon:
-    eureka: 
-      enabled: true         # 默认为true。如果设置为false，Ribbon将不会从Eureka中获得服务列表，而是使用静态配置的服务列表。
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+feign:
+  hystrix:
+    enabled: true
+#ribbon:
+#    eureka: 
+#      enabled: true         # 默认为true。如果设置为false，Ribbon将不会从Eureka中获得服务列表，而是使用静态配置的服务列表。

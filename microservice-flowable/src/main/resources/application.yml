@@ -2,7 +2,7 @@ server:
   port: 12008
 spring:
   application: 
-    name: microservice-flowable    # 项目名称尽量用小写
+    name: microservice-flowable
   jpa:
     database: MYSQL
     generate-ddl: false
@@ -12,7 +12,7 @@ spring:
     properties: 
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
-  datasource:                           # 指定数据源
+  datasource:                          
     url: jdbc:mysql://127.0.0.1:3306/microservice_flowable
     driverClassName: com.mysql.jdbc.Driver
     username: root  
@@ -40,7 +40,7 @@ logging:
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
-    com.itmuch.youran.persistence: ERROR
+    #com.itmuch.youran.persistence: ERROR
 eureka:
   client:
     serviceUrl:

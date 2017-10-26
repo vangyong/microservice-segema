@@ -86,7 +86,8 @@
 			  });
 			  
 			  //监听提交
-			  form.on('submit(useradd)', function(data,index){
+			  form.on('submit(useradd-form)', function(data,index){
+				  alert("useradd-form");
 			    		$.ajax({
 			                type: "POST",
 			                dataType: "json",
