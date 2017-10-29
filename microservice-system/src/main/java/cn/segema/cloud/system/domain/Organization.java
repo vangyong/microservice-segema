@@ -2,13 +2,11 @@ package cn.segema.cloud.system.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 组织
+ * 组织机构
  * @author wangyong
  *
  */
@@ -17,45 +15,45 @@ import javax.persistence.Table;
 public class Organization {
 	@Id
 	@Column(name = "ORGANIZATIONID")
-	private String orgnizationId;
+	private String organizationId;
 
 	@Column(name = "ORGANIZATIONNAME")
-	private String orgnizationName;
+	private String organizationName;
 
 	@Column(name = "ORGANIZATIONCODE")
-	private String orgnizationCode;
+	private Integer organizationCode;
 
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "PARENTID")
-	private String parentId;
+	@Column(name = "PARENTCODE")
+	private Integer parentCode;
 
 	@Column(name = "TYPE")
 	private Integer type;
 
-	public String getOrgnizationId() {
-		return orgnizationId;
+	public String getOrganizationId() {
+		return organizationId;
 	}
 
-	public void setOrgnizationId(String orgnizationId) {
-		this.orgnizationId = orgnizationId;
+	public void setOrganizationId(String organizationId) {
+		this.organizationId = organizationId;
 	}
 
-	public String getOrgnizationName() {
-		return orgnizationName;
+	public String getOrganizationName() {
+		return organizationName;
 	}
 
-	public void setOrgnizationName(String orgnizationName) {
-		this.orgnizationName = orgnizationName;
+	public void setOrganizationName(String organizationName) {
+		this.organizationName = organizationName;
 	}
 
-	public String getOrgnizationCode() {
-		return orgnizationCode;
+	public Integer getOrganizationCode() {
+		return organizationCode;
 	}
 
-	public void setOrgnizationCode(String orgnizationCode) {
-		this.orgnizationCode = orgnizationCode;
+	public void setOrganizationCode(Integer organizationCode) {
+		this.organizationCode = organizationCode;
 	}
 
 	public String getDescription() {
@@ -66,12 +64,12 @@ public class Organization {
 		this.description = description;
 	}
 
-	public String getParentId() {
-		return parentId;
+	public Integer getParentCode() {
+		return parentCode;
 	}
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
+	public void setParentCode(Integer parentCode) {
+		this.parentCode = parentCode;
 	}
 
 	public Integer getType() {

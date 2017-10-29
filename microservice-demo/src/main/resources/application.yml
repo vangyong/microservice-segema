@@ -4,19 +4,27 @@ spring:
   application:
     name: microservice-demo    # 项目名称尽量用小写
   jpa:
-    database: MYSQL
+    #database: MYSQL
+    database: POSTGRESQL
     generate-ddl: false
     show-sql: true
     hibernate:
       ddl-auto: update
     properties: 
       hibernate: 
-        dialect : org.hibernate.dialect.MySQL5Dialect
-  datasource:                           # 指定mysql数据源
-    url: jdbc:mysql://127.0.0.1:3306/microservice_demo?useUnicode=true&characterEncoding=utf8
-    driverClassName: com.mysql.jdbc.Driver
-    username: root  
-    password: root
+        #dialect : org.hibernate.dialect.MySQL5Dialect
+        dialect : org.hibernate.dialect.PostgreSQLDialect
+#  datasource:                           # 指定mysql数据源
+#    url: jdbc:mysql://127.0.0.1:3306/microservice_demo?useUnicode=true&characterEncoding=utf8
+#    driverClassName: com.mysql.jdbc.Driver
+#    username: root  
+#    password: root
+    
+  datasource:                           # 指定postgresql数据源
+    url: jdbc:postgresql://127.0.0.1:5433/microservice_demo
+    driverClassName: org.postgresql.Driver
+    username: postgres  
+    password: postgres  
 #  redis:                               # 指定redis数据源
 #    database: 0
 #    host: 127.0.0.1
