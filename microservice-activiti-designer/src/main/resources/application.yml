@@ -1,0 +1,36 @@
+server:
+  port: 12007
+spring:
+  application:
+    name: microservice-activiti-designer
+  datasource: 
+    url: jdbc:mysql://127.0.0.1:3306/microservice_activiti?useUnicode=true&amp;characterEncoding=utf8
+    driverClassName: com.mysql.jdbc.Driver
+    username: root  
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    max-active: 20
+    initial-size: 1
+    min-idle: 3
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    poolPreparedStatements: true
+    filters: stat,wall,slf4j
+logging: 
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    #com.itmuch.youran.persistence: ERROR
+eureka: 
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/    # 指定注册中心的地址
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
