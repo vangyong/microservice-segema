@@ -1,4 +1,4 @@
-package cn.segema.cloud.flowable;
+package cn.segema.cloud.flowable.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

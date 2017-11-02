@@ -1,4 +1,4 @@
-package cn.segema.cloud.flowable.service;
+package cn.segema.cloud.flowable.web.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FlowableService {
+public class FlowableWebService {
 	
 	private ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 	@Autowired
@@ -38,8 +38,8 @@ public class FlowableService {
 	private IdentityService identityService;
 	@Autowired
 	private FormService formService;
-	@Autowired
-	private DynamicBpmnService dynamicBpmnService;
+	//@Autowired
+	//private DynamicBpmnService dynamicBpmnService;
 	
 	
 	/**

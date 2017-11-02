@@ -75,36 +75,15 @@
 		    //新增
 		  	$("#btn-addorganization").on('click', function() {
     		    layer.open({
-    		    	  type: 2,
-    		    	  area: ['700px', '450px'],
-    		    	  fixed: false,
-    		    	  maxmin: true,
-    		    	  content: '/system-web/html/system/organization/organizationadd.html',
-    		    	  btn: ['提交', '全部关闭'],
-    		    	  btnAlign: 'c',
-    		    	  btn1: function(){
-    		    		  /* var temp=$('#organizationadd-form').serialize();  
-    		    		  var a = $("#organizationadd-form");
-    		    		  alert(temp);
-    		    		  $.ajax({
-  			                type: "POST",
-  			                dataType: "json",
-  			                url: "/system/organization/add",
-  			                data: $("#organizationadd-form").serializeJSON(),
-  			                success: function (obj) {
-  			                	parent.window.location.href="/system-web/html/system/organization/organizationlist.html";
-  			                 	var index = parent.layer.getFrameIndex(window.name);
-  			                 	parent.layer.close(index);
-  			                    // return false;
-  			                },
-  			                error: function(data) {
-  			                	 	layer.msg("网络错误");
-  			                }
-  			            }); */
-  			          $("form").submit(function(e){
-  			        	  		alert("Submitted");
-  			        	  });
-    		    		  
+	    		    	  type: 2,
+	    		    	  area: ['700px', '450px'],
+	    		    	  fixed: false,
+	    		    	  maxmin: true,
+	    		    	  content: '/system-web/html/system/organization/organizationadd.html',
+	    		    	  btn: ['提交', '关闭'],
+	    		    	  btnAlign: 'c',
+	    		    	  btn1: function(){
+	    		    		  saveOrganization();
 	    	          },
 	    	          btn2: function(){
 	    	             layer.closeAll();
@@ -133,8 +112,9 @@
 	  		    	  content: '/system-web/html/system/organization/organizationview.html'
 	  		    	});
   			});
-			
    	 	});
+    	
+    	
 	</script>
   </body>
 
