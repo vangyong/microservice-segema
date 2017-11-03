@@ -16,7 +16,6 @@ import org.flowable.engine.RuntimeService;
 import org.flowable.engine.TaskService;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.runtime.ProcessInstance;
-import org.flowable.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -79,9 +78,9 @@ public class FlowableService {
 	}
 
 	// 获得某个人的任务别表
-	public List<Task> getTasks(String assignee) {
-		return taskService.createTaskQuery().taskCandidateUser(assignee).list();
-	}
+//	public List<Task> getTasks(String assignee) {
+//		return taskService.createTaskQuery().taskCandidateUser(assignee).list();
+//	}
 
 	// 完成任务
 	public void completeTasks(Boolean joinApproved, String taskId) {

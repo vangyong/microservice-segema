@@ -1,34 +1,104 @@
 package cn.segema.cloud.auth.server.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import java.io.Serializable;
+/**
+ * 用户
+ * @author wangyong
+ */
+@Table(name = "SYS_USER")
+@Entity
+public class User {
+	@Id
+	@Column(name = "USERID")
+	private String userId;
+	
+	@Column(name = "USERNAME")
+	private String userName;
+	
+	@Column(name = "NICKNAME")
+	private String nickName;
+	
+	@Column(name = "PASSWORD")
+	private String password;
+	
+	@Column(name = "MOBILENUMBER")
+	private String mobileNumber;
+	
+	@Column(name = "CREDENTIALSSALT")
+	private String credentialsSalt;
+	
+	@Column(name = "GENDER")
+	private Integer gender;
+	
+	@Column(name = "DELETESTATUS")
+	private Integer deletestatus;
 
-public class User implements Serializable {
-    private Long id;
-    private String username;
-    private String password;
+	public String getUserId() {
+		return userId;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getUserName() {
+		return this.userName;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public String getNickName() {
+		return nickName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public String getCredentialsSalt() {
+		return credentialsSalt;
+	}
+
+	public void setCredentialsSalt(String credentialsSalt) {
+		this.credentialsSalt = credentialsSalt;
+	}
+	
+	public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+
+	public Integer getDeletestatus() {
+		return deletestatus;
+	}
+
+	public void setDeletestatus(Integer deletestatus) {
+		this.deletestatus = deletestatus;
+	}
+
 }
