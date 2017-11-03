@@ -1,8 +1,6 @@
 package cn.segema.cloud.system.controller;
 
 import java.util.List;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -25,6 +23,9 @@ import cn.segema.cloud.system.repository.OrganizationRepository;
 import cn.segema.cloud.system.vo.OrganizationPersonalVO;
 import cn.segema.cloud.system.vo.OrganizationTreeVO;
 
+/**
+ * 组织机构Controller
+ */
 @RestController
 @RequestMapping(value = "/organization")
 public class OrganizationController {

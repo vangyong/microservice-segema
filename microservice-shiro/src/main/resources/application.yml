@@ -30,7 +30,7 @@ spring:
     timeout: 0
   thymeleaf: 
         cache: false
-        prefix: classpath:/templates/
+        prefix: classpath:/static/html/shiro/
         suffix: .html
         mode: HTML5
         encoding: UTF-8
@@ -41,7 +41,7 @@ logging:
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
-    com.itmuch.youran.persistence: ERROR
+    #com.itmuch.youran.persistence: ERROR
 eureka:
   client:
     serviceUrl:

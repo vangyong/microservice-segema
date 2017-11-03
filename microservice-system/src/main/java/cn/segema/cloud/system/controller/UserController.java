@@ -24,6 +24,9 @@ import cn.segema.cloud.system.domain.User;
 import cn.segema.cloud.system.repository.UserRepository;
 import cn.segema.cloud.system.vo.UserPersonalVO;
 
+/**
+ * 用户Controller
+ */
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
@@ -39,16 +42,7 @@ public class UserController {
   @GetMapping("/{userId}")
   public User findById(@PathVariable String userId) throws Exception {
     User user = this.userRepository.findOne(userId);
-    
-    try{
-    		throw new Exception("aaa");
-    }catch (java.lang.ArithmeticException e){
-        System.out.println("testEx2, catch exception");
-        throw new Exception("aaa");
-    }finally{
-        System.out.println("finally!");
-        //return user;
-    }
+    return user;
   }
   
   @GetMapping("/list")

@@ -99,9 +99,9 @@ public class SecurityController {
 		return "redirect:/login";
 	}
 
-	@RequestMapping("/pages/403")
+	@RequestMapping("/403")
 	public String unauthorizedRole() {
 		logger.info("------没有权限-------");
-		return "pages/403";
+		return "redirect:/403";
 	}
 }
