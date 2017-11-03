@@ -2,7 +2,7 @@ server:
   port: 12011
 spring:
   application:
-    name: microservice-shiro    # 项目名称尽量用小写
+    name: microservice-shiro
   jpa:
     database: MYSQL
     generate-ddl: false
@@ -12,8 +12,8 @@ spring:
     properties: 
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
-  datasource:                           # 指定数据源
-    url: jdbc:mysql://127.0.0.1:3306/microservice_system?useUnicode=true&characterEncoding=utf8
+  datasource:                     
+    url: jdbc:mysql://127.0.0.1:3306/microservice_system?useUnicode=true&amp;characterEncoding=utf8
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
@@ -45,6 +45,6 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/    # 指定注册中心的地址
+      defaultZone: http://discovery:8761/eureka/ 
   instance:
     preferIpAddress: true

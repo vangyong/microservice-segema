@@ -9,7 +9,6 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +24,7 @@ import cn.segema.cloud.shrio.domain.User;
 @Controller
 public class SecurityController {
 
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SecurityController.class);
 
 	//@RequiresRoles("ADMIN")
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -85,7 +84,7 @@ public class SecurityController {
 		// 验证是否登录成功
 		if (currentUser.isAuthenticated()) {
 			logger.info("用户[" + username + "]登录认证通过(这里可以进行一些认证通过后的一些系统参数初始化操作)");
-			return "/index";
+			return "redirect:/index";
 		} else {
 			token.clear();
 			return "redirect:/login";
