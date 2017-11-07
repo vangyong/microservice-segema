@@ -78,4 +78,10 @@ public class DemoUserVO  implements Serializable{
 		this.credentialsSalt = credentialsSalt;
 	}
 
+	@Override
+	public String toString() {
+		return "DemoUserVO [userId=" + userId + ", userName=" + userName + ", nickName=" + nickName + ", password="
+				+ password + ", mobileNumber=" + mobileNumber + ", credentialsSalt=" + credentialsSalt + "]";
+	}
+
 }

@@ -4,16 +4,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -36,10 +32,10 @@ public class RedisTestController {
   @Autowired
   private DiscoveryClient discoveryClient;
   
-  @Autowired
+  @Resource
   private StringRedisTemplate stringRedisTemplate;
 
-  @Autowired
+  @Resource
   private RedisTemplate redisTemplate;
  
   
@@ -51,38 +47,67 @@ public class RedisTestController {
 	  	DemoUserVO user2 = new DemoUserVO();
 	  	user2.setUserId("2");
 	  	user2.setUserName("a2");
+		DemoUserVO user3 = new DemoUserVO();
+	  	user3.setUserId("3");
+	  	user3.setUserName("a3");
+	  	
 		List<DemoUserVO> userList = new ArrayList<DemoUserVO>();
 		userList.add(user1);
 		userList.add(user2);
-		String key ="123456";
+		
 		Set<DemoUserVO> userSet = new HashSet<DemoUserVO>();
+		userSet.add(user1);
 		Set<TypedTuple<DemoUserVO>> userzSet = new HashSet<TypedTuple<DemoUserVO>>();
 		
+		String string_key ="stringkey";
+		String value_key ="valuekey";
+		String hash_key ="hashkey";
+		String list_key ="listkey";
+		String set_key ="setkey";
+		String zset_key ="zsetkey";
+		
+        ValueOperations<String, Object> stringOps = redisTemplate.opsForValue();
+        ValueOperations<String, DemoUserVO> valueOps = redisTemplate.opsForValue();
 		HashOperations<String,String, DemoUserVO> hashOps =  redisTemplate.opsForHash();
-		ValueOperations<String, DemoUserVO> valueOps = redisTemplate.opsForValue();
 		ListOperations<String, DemoUserVO> listOps =redisTemplate.opsForList();
 		SetOperations<String, DemoUserVO> setOps = redisTemplate.opsForSet();
 		ZSetOperations<String, DemoUserVO> zSetOps = redisTemplate.opsForZSet();
 		
-		String returnString =  (String) redisTemplate.opsForValue().get(key);
-	
-		valueOps.set(key, user1);
-		listOps.set(key, 0, user1);
-		listOps.set(key, 1, user2);
-		setOps.add(key, user1);
-		zSetOps.add(key, userzSet);
+		stringOps.set(string_key, "value of 1");
+        System.out.println(stringOps.get(string_key));
+        
+        valueOps.set(value_key, user1);
+        System.out.println(valueOps.get(value_key));
+        
+        hashOps.put(hash_key, "hashKey", user1);
+        
+	    listOps.rightPush(list_key, user1);
+	    listOps.rightPush(list_key, user2);
+	    
+	    
+	    setOps.add(set_key, user1);
+	    
+	   // zSetOps.add(zset_key, userzSet);
+	    zSetOps.add(zset_key, user1, 0);
+	    zSetOps.add(zset_key, user2, 1);
+	    zSetOps.add(zset_key, user3, 2);
 		
-		DemoUserVO returnUser =  valueOps.get(key);
+		ValueOperations<String, Object> returnStringValue = redisTemplate.opsForValue();
+		System.out.println(returnStringValue.get("1"));
 		
-		DemoUserVO returnUser2 =  listOps.index(key, 0);
-		
-		DemoUserVO returnUser3 =  setOps.pop(key);
-		
+		ValueOperations<String, DemoUserVO> returnValueValue = redisTemplate.opsForValue();
+		System.out.println(returnValueValue.get(value_key));
+		HashOperations<String,String, DemoUserVO> returnHashValue =  redisTemplate.opsForHash();
+		System.out.println(returnHashValue.get(hash_key, "hashKey"));
+		ListOperations<String, DemoUserVO> returnListValue =redisTemplate.opsForList();
+		System.out.println("LIST");
+		SetOperations<String, DemoUserVO> returnSetValue = redisTemplate.opsForSet();
+		System.out.println(returnSetValue.members(set_key));
+		ZSetOperations<String, DemoUserVO> returnZSetValue = redisTemplate.opsForZSet();
+		System.out.println(returnZSetValue.rangeByScore(zset_key, 0, 2));
 		
 		return userList;
 	}
-
-	
  
 
   /**
