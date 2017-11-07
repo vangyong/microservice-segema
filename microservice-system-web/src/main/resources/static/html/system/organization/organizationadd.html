@@ -51,6 +51,13 @@
 						class="layui-input">
 				</div>
 			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label"></label>
+				<div class="layui-input-inline">
+					<button class="layui-btn" lay-submit="" id="organizationadd" lay-filter="organizationadd">提交</button>
+					<button type="reset" class="layui-btn layui-btn-primary" id="organizationreset" >重置</button>
+				</div>
+			</div>
 		</form>
 	</div>
 	<script type="text/javascript" src="../../../plugins/jquery-1.11.0/jquery-1.11.0.min.js"></script>
@@ -68,7 +75,7 @@
 			
 			var maxOrganizationCode;
 			
-			 //获取上级组织数据(select)
+			 //获取上级组织数据,下拉选择(select)
 			 var organization = {"organizationId":"","organizationName":""};
 			 $.ajax({
 	                type: "GET",
@@ -90,7 +97,7 @@
 	                }
 	            });
 			 
-			  //树形选择
+			  //获取上级组织数据,树形选择(tree)
 			  /* layui.tree({
 				  elem: '#parentCode'
 					  ,nodes: [{ //节点数据
@@ -119,8 +126,7 @@
 			  //上级组织切换 
 			  form.on('select(parentOrganization)',function(data){
 			    if(data.value){
-			    		var a = getMaxOrganization(data.value);
-			    		console.log("MAX:"+a);
+			    		var maxOrganizationCode = getMaxOrganization(data.value);
 			    		if(maxOrganizationCode==null||maxOrganizationCode==""){
 			    			$('#organizationCode').val(parseInt(data.value.toString()+"001"));
 			    		}else{
@@ -135,7 +141,6 @@
 			    		}
 			    }
 			  });
-			 
 			
 			  //自定义验证规则
 			  form.verify({
@@ -151,24 +156,25 @@
 			  });
 			  
 			  //监听提交
-			  /* form.on('submit(organizationadd-form)', function(data,index){
-				  alert("useradd-form");
+			  form.on('submit(organizationadd)', function(data,index){
+				  console.log(data.field);
 			    		$.ajax({
 			                type: "POST",
 			                dataType: "json",
 			                url: "/system/organization/add",
 			                data: data.field,
 			                success: function (obj) {
+			                		layer.closeAll('iframe');
 			                		parent.window.location.href="/system-web/html/system/organization/organizationlist.html";
-			                 	var index = parent.layer.getFrameIndex(window.name);
-			                 	parent.layer.close(index);
-			                    // return false;
+			                 	/* var index = parent.layer.getFrameIndex(window.name);
+			                 	parent.layer.close(index); */
+			                 	
 			                },
 			                error: function(data) {
 			                	 	layer.msg("网络错误");
 			                }
 			            });
-			  }); */
+			  });
 			
 			  form.on('submit(organizationreset)', function(data){
 				  form.render();
@@ -179,44 +185,22 @@
 		
 		//获取最大code
 		function getMaxOrganization(parentOrganizationCode){
+			var maxOrganizationCode =0;
 			$.ajax({
 	            type: "GET",
-	            sync: false,
+	            async: false,
 	            url: "/system/organization/maxOrganization/"+parentOrganizationCode,
 	            success: function (obj) {
 	            		 maxOrganizationCode = obj;
-	            		 console.log("maxOrganizationCode:"+maxOrganizationCode);
-	            		 return obj;
 	            },
 	            error: function(data) {
 	            	 	layer.msg("MaxOrganization 网络错误");
 	            }
 	        });
+			return maxOrganizationCode;
 		}
 		
-		function saveOrganization(){
-			  var temp=$('#organizationadd-form').serialize();  
-	  		  var a = $("#organizationadd-form");
-	  		  alert(temp);
-	  		  $.ajax({
-	                type: "POST",
-	                dataType: "json",
-	                url: "/system/organization/add",
-	                data: $("#organizationadd-form").serializeJSON(),
-	                success: function (obj) {
-	                	parent.window.location.href="/system-web/html/system/organization/organizationlist.html";
-	                 	var index = parent.layer.getFrameIndex(window.name);
-	                 	parent.layer.close(index);
-	                    // return false;
-	                },
-	                error: function(data) {
-	                	 	layer.msg("网络错误");
-	                }
-	            });
-	          /* $("form").submit(function(e){
-	        	  		alert("Submitted");
-	        	  }); */
-		}
+		
 		
 	</script>
 

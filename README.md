@@ -39,6 +39,8 @@
 | microservice-config                      | 8050 | 配置服务                       | 详见文章         |
 | microservice-discovery                   | 8761 | 注册中心                       | /               |
 | microservice-hystrix-turbine             | 8030 | hystrix-turbine监控            | /turbine.stream |
+| microservice-demo                        | 8080 | 实例demo服务                    | /1              |
+| microservice-demo-web                    | 8081 | 实例demo服务WEB                 | /1              |
 | microservice-system                      | 12000 | 系统管理服务                   | /1              |
 | microservice-system-web                  | 12001 | 系统管理服务WEB                 | /1              |
 | microservice-contract                    | 12002 | 合同管理服务                    | /1              |
@@ -53,5 +55,4 @@
 | microservice-filecenter                  | 12012 | 文件中心服务                    | /1              |
 | microservice-broadcast                   | 12013 | 编播系统服务提供者               | /1              |
 | microservice-broadcast-web               | 12014 | 编播系统服务WEB                 | /1              |
-| microservice-demo                        | 13015 | 实例demo服务                    | /1              |
-| microservice-demo-web                    | 13016 | 实例demo服务WEB                 | /1              |
+

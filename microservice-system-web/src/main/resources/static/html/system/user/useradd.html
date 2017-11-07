@@ -94,10 +94,10 @@
 			                url: "/system/user/add",
 			                data: data.field,
 			                success: function (obj) {
-			                	parent.window.location.href="/system-web/html/system/user/userlist.html";
+			                		parent.window.location.href="/system-web/html/system/user/userlist.html";
 			                 	var index = parent.layer.getFrameIndex(window.name);
 			                 	parent.layer.close(index);
-			                    // return false;
+			                     return false;
 			                },
 			                error: function(data) {
 			                	 	layer.msg("网络错误");

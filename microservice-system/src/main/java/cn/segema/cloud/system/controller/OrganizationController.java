@@ -1,6 +1,9 @@
 package cn.segema.cloud.system.controller;
 
 import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -35,8 +38,8 @@ public class OrganizationController {
 	private OrganizationRepository organizationRepository;
 
 	/**
-	 * @param id
-	 * @return organizationRepository信息
+	 * @param userId
+	 * @return Organization
 	 */
 	@GetMapping("/{userId}")
 	public Organization findById(@PathVariable String userId) throws Exception {
@@ -44,29 +47,57 @@ public class OrganizationController {
 		return organization;
 	}
 
+	/**
+	 * @param organization
+	 * @return List<Organization>
+	 */
 	@GetMapping("/list")
-	public List<Organization> list(Organization organization, Model model) {
+	public List<Organization> list(Organization organization) {
 		List<Organization> organizationList = organizationRepository.findAll();
 		return organizationList;
 	}
 
+	/**
+	 * @param organization
+	 * @return Organization
+	 */
 	@PostMapping("/add")
-	public Organization add(Organization organization, Model model) {
-		// if (user.getUserId() == null || "".equals(user.getUserId())) {
-		// user.setUserId(UUID.randomUUID().toString());
-		// }
+	public Organization add(Organization organization) {
+		if(organization.getParentCode()!=null){
+			Integer maxOrganizationCode = organizationRepository.findMaxOrganization(organization.getParentCode());
+			if(maxOrganizationCode!=null) {
+				if(organization.getOrganizationCode()!=null) {
+					if(organization.getOrganizationCode()>maxOrganizationCode) {
+						organization.setOrganizationId(String.valueOf(organization.getOrganizationCode()));
+					}
+				}else {
+					organization.setOrganizationCode(maxOrganizationCode+1);
+					organization.setOrganizationId(String.valueOf(maxOrganizationCode+1));
+				}
+			}else {
+				String organizationCode = String.valueOf(organization.getParentCode())+"001";
+				organization.setOrganizationCode(Integer.valueOf(organizationCode));
+				organization.setOrganizationId(String.valueOf(organizationCode));
+			}
+		}
 		organizationRepository.save(organization);
 		return organization;
 	}
 
+	/**
+	 * @param organization
+	 * @return Organization
+	 */
 	@RequestMapping(value = "edit")
-	public Organization edit(Organization organization, Model model) {
-		// Role oldRole = roleRepository.getOne(role.getRoleId());
-		// BeanUtils.copyProperties(role, oldRole);
+	public Organization edit(Organization organization) {
 		organizationRepository.save(organization);
 		return organization;
 	}
 
+	/**
+	 * @param organization
+	 * @return Organization
+	 */
 	@RequestMapping(value = "delete")
 	public Organization delete(Organization organization) {
 		organizationRepository.delete(organization);
