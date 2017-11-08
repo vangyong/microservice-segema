@@ -157,17 +157,23 @@
 			  
 			  //监听提交
 			  form.on('submit(organizationadd)', function(data,index){
-				  console.log(data.field);
+				  console.log("data.field:"+data.field);
 			    		$.ajax({
 			                type: "POST",
+			                async: false,
 			                dataType: "json",
 			                url: "/system/organization/add",
 			                data: data.field,
 			                success: function (obj) {
-			                		layer.closeAll('iframe');
-			                		parent.window.location.href="/system-web/html/system/organization/organizationlist.html";
-			                 	/* var index = parent.layer.getFrameIndex(window.name);
-			                 	parent.layer.close(index); */
+			                		var parentindex = parent.getlay(); 
+			                	    alert("parentindex"+parentindex);
+			                     var index = parent.layer.getFrameIndex(window.name);
+			                     alert("index"+index);
+			                 	/* parent.window.location.href="/system-web/html/system/organization/organizationlist.html";
+		                        var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+		                        parent.layer.close(index); */
+		                        
+			                     layer.msg("添加成功");
 			                 	
 			                },
 			                error: function(data) {

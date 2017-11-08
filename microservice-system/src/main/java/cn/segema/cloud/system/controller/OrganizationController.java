@@ -1,9 +1,6 @@
 package cn.segema.cloud.system.controller;
 
 import java.util.List;
-import java.util.UUID;
-
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -12,17 +9,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import cn.segema.cloud.common.page.Pager;
 import cn.segema.cloud.common.page.PagerParamVO;
 import cn.segema.cloud.system.domain.Organization;
 import cn.segema.cloud.system.repository.OrganizationRepository;
+import cn.segema.cloud.system.service.OrganizationService;
 import cn.segema.cloud.system.vo.OrganizationPersonalVO;
 import cn.segema.cloud.system.vo.OrganizationTreeVO;
 
@@ -35,15 +31,17 @@ public class OrganizationController {
 	@Autowired
 	private DiscoveryClient discoveryClient;
 	@Autowired
+	private OrganizationService organizationService;
+	@Autowired
 	private OrganizationRepository organizationRepository;
 
 	/**
 	 * @param userId
 	 * @return Organization
 	 */
-	@GetMapping("/{userId}")
-	public Organization findById(@PathVariable String userId) throws Exception {
-		Organization organization = organizationRepository.findOne(userId);
+	@GetMapping("/{organizationId}")
+	public Organization findById(@PathVariable String organizationId) throws Exception {
+		Organization organization = organizationRepository.findOne(organizationId);
 		return organization;
 	}
 
@@ -88,7 +86,7 @@ public class OrganizationController {
 	 * @param organization
 	 * @return Organization
 	 */
-	@RequestMapping(value = "edit")
+	@RequestMapping(value = "/edit")
 	public Organization edit(Organization organization) {
 		organizationRepository.save(organization);
 		return organization;
@@ -98,7 +96,7 @@ public class OrganizationController {
 	 * @param organization
 	 * @return Organization
 	 */
-	@RequestMapping(value = "delete")
+	@PostMapping(value = "/delete")
 	public Organization delete(Organization organization) {
 		organizationRepository.delete(organization);
 		return organization;
@@ -113,9 +111,13 @@ public class OrganizationController {
 
 	@GetMapping("/listByPage")
 	public Pager<Organization> listByPage(PagerParamVO pagerParam) {
-		Sort sort = new Sort(Direction.DESC, "organizationId");
+		//Sort sort = new Sort(Direction.DESC, pagerParam.getOrder());
+		Sort sort = new Sort(Direction.DESC, "organizationCode");
 		Pageable pageable = new PageRequest(pagerParam.getCurr() - 1, pagerParam.getNums(), sort);
-		Page<Organization> page = organizationRepository.findAll(pageable);
+		Page<Organization> page = organizationService.findByPage(pageable, pagerParam.getParams());
+		
+		//Page<Organization> page = organizationRepository.findAll(pageable);
+		
 		Pager<Organization> pager = new Pager<Organization>();
 		pager.setCode("0");
 		pager.setMsg("success");
@@ -130,7 +132,7 @@ public class OrganizationController {
 		return organizationCode;
 	}
 	
-	@GetMapping("/treeList")
+	@GetMapping("/treeList/{parentOrganizationCode}")
 	public List<OrganizationTreeVO> treeList(@PathVariable Integer parentOrganizationCode) {
 		List<OrganizationTreeVO> organizationList = organizationRepository.findTreeList(parentOrganizationCode);
 		return organizationList;

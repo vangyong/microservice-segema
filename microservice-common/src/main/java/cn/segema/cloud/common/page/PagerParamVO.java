@@ -1,6 +1,7 @@
 package cn.segema.cloud.common.page;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * 分页参数VO
@@ -17,6 +18,10 @@ public class PagerParamVO implements Serializable {
 	private int nums;
 	//排序字段
 	private String order;
+	//排序方向
+	private String direction;
+	//查询参数
+	private Map<String, String> params;
 
 	public int getCurr() {
 		return curr;
@@ -40,6 +45,22 @@ public class PagerParamVO implements Serializable {
 
 	public void setOrder(String order) {
 		this.order = order;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public Map<String, String> getParams() {
+		return params;
+	}
+
+	public void setParams(Map<String, String> params) {
+		this.params = params;
 	}
 
 	
