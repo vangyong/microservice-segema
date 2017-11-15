@@ -1,8 +1,16 @@
 package cn.segema.cloud.system.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,11 +34,16 @@ public class Organization {
 	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "PARENTCODE")
-	private Integer parentCode;
-
+	@ManyToOne
+    @JoinColumn(name="PARENTID")
+    private Organization parent;
+	
 	@Column(name = "TYPE")
 	private Integer type;
+	
+	@OneToMany(fetch=FetchType.LAZY)
+    @JoinColumn(name="PARENTID")
+    private Set<Organization> children = new HashSet<Organization>();
 
 	public String getOrganizationId() {
 		return organizationId;
@@ -64,12 +77,20 @@ public class Organization {
 		this.description = description;
 	}
 
-	public Integer getParentCode() {
-		return parentCode;
+	public Organization getParent() {
+		return parent;
 	}
 
-	public void setParentCode(Integer parentCode) {
-		this.parentCode = parentCode;
+	public void setParent(Organization parent) {
+		this.parent = parent;
+	}
+
+	public Set<Organization> getChildren() {
+		return children;
+	}
+
+	public void setChildren(Set<Organization> children) {
+		this.children = children;
 	}
 
 	public Integer getType() {

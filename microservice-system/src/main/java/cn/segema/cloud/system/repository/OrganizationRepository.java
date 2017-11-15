@@ -22,9 +22,9 @@ public interface OrganizationRepository extends PagingAndSortingRepository<Organ
 	 @Query("SELECT o from Organization o  where o.organizationName = ?1 ") 
 	 public List<Organization> findByOrganizationName(String organizationName); 
 	 
-	 @Query("SELECT max(o.organizationCode) as organizationCode from Organization o  where o.parentCode = ?1 ") 
-	 public Integer findMaxOrganization(Integer parentOrganizationCode); 
+	 @Query("SELECT max(o.organizationCode) as organizationCode from Organization o  where o.parent.organizationId = ?1 ") 
+	 public Integer findMaxOrganization(String parentId); 
 	 
-	 @Query("SELECT o from Organization o  where o.parentCode = ?1 ") 
-	 public List<OrganizationTreeVO> findTreeList(Integer parentOrganizationCode); 
+	 @Query("SELECT o from Organization o  where o.parent.organizationId = ?1 ") 
+	 public List<Organization> findTreeList(String parentId); 
 }

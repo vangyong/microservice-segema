@@ -1,6 +1,9 @@
 package cn.segema.cloud.system.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -21,6 +24,8 @@ import cn.segema.cloud.system.repository.OrganizationRepository;
 import cn.segema.cloud.system.service.OrganizationService;
 import cn.segema.cloud.system.vo.OrganizationPersonalVO;
 import cn.segema.cloud.system.vo.OrganizationTreeVO;
+import cn.segema.cloud.system.vo.OrganizationVO;
+import cn.segema.cloud.system.vo.TreeVO;
 
 /**
  * 组织机构Controller
@@ -61,8 +66,8 @@ public class OrganizationController {
 	 */
 	@PostMapping("/add")
 	public Organization add(Organization organization) {
-		if(organization.getParentCode()!=null){
-			Integer maxOrganizationCode = organizationRepository.findMaxOrganization(organization.getParentCode());
+		if(organization.getParent()!=null){
+			Integer maxOrganizationCode = organizationRepository.findMaxOrganization(organization.getParent().getOrganizationId());
 			if(maxOrganizationCode!=null) {
 				if(organization.getOrganizationCode()!=null) {
 					if(organization.getOrganizationCode()>maxOrganizationCode) {
@@ -73,7 +78,7 @@ public class OrganizationController {
 					organization.setOrganizationId(String.valueOf(maxOrganizationCode+1));
 				}
 			}else {
-				String organizationCode = String.valueOf(organization.getParentCode())+"001";
+				String organizationCode = organization.getParent().getOrganizationId()+"001";
 				organization.setOrganizationCode(Integer.valueOf(organizationCode));
 				organization.setOrganizationId(String.valueOf(organizationCode));
 			}
@@ -110,32 +115,87 @@ public class OrganizationController {
 	}
 
 	@GetMapping("/listByPage")
-	public Pager<Organization> listByPage(PagerParamVO pagerParam) {
+	public Pager<OrganizationVO> listByPage(PagerParamVO pagerParam) {
 		//Sort sort = new Sort(Direction.DESC, pagerParam.getOrder());
-		Sort sort = new Sort(Direction.DESC, "organizationCode");
+		Sort sort = new Sort(Direction.DESC, "organizationId");
 		Pageable pageable = new PageRequest(pagerParam.getCurr() - 1, pagerParam.getNums(), sort);
 		Page<Organization> page = organizationService.findByPage(pageable, pagerParam.getParams());
 		
 		//Page<Organization> page = organizationRepository.findAll(pageable);
 		
-		Pager<Organization> pager = new Pager<Organization>();
+		Pager<OrganizationVO> pager = new Pager<OrganizationVO>();
 		pager.setCode("0");
 		pager.setMsg("success");
 		pager.setCount(page.getTotalElements());
-		pager.setData(page.getContent());
+		List<Organization> content = page.getContent();
+		List<OrganizationVO> data = new ArrayList<OrganizationVO>();
+		if(content!=null&&content.size()>0) {
+			for(Organization organization:content) {
+				OrganizationVO organizationVO = new OrganizationVO();
+				BeanUtils.copyProperties(organization, organizationVO, "chidren","parent");
+				organizationVO.setParentId(organization.getParent()==null?null:organization.getParent().getOrganizationId());
+				data.add(organizationVO);
+			}
+		}
+		pager.setData(data);
 		return pager;
 	}
 	
-	@GetMapping("/maxOrganization/{parentOrganizationCode}")
-	public Integer maxOrganization(@PathVariable Integer parentOrganizationCode) {
-		Integer organizationCode = organizationRepository.findMaxOrganization(parentOrganizationCode);
+	@GetMapping("/maxOrganization/{parentId}")
+	public Integer maxOrganization(@PathVariable String parentId) {
+		Integer organizationCode = organizationRepository.findMaxOrganization(parentId);
 		return organizationCode;
 	}
 	
-	@GetMapping("/treeList/{parentOrganizationCode}")
-	public List<OrganizationTreeVO> treeList(@PathVariable Integer parentOrganizationCode) {
-		List<OrganizationTreeVO> organizationList = organizationRepository.findTreeList(parentOrganizationCode);
-		return organizationList;
+	@GetMapping("/treeList/{parentId}")
+	public List<OrganizationTreeVO> treeList(@PathVariable String parentId) {
+		List<Organization> organizationList = organizationRepository.findTreeList(parentId);
+		
+		List<OrganizationTreeVO> treeList = new ArrayList<OrganizationTreeVO>();
+		if(organizationList!=null&&organizationList.size()>0) {
+			for(Organization organization:organizationList) {
+				OrganizationTreeVO organizationTreeVO = new OrganizationTreeVO();
+				organizationTreeVO.setOrganizationId(organization.getOrganizationId());
+				organizationTreeVO.setOrganizationName(organization.getOrganizationName());
+				organizationTreeVO.setChildren(null);
+				treeList.add(organizationTreeVO);
+			}
+		}
+		
+		return treeList;
+	}
+	
+	@GetMapping("/treeTest/{parentId}")
+	public List<TreeVO> treeTest(@PathVariable String parentId) {
+		
+		List<TreeVO> treeList = new ArrayList<TreeVO>();
+		TreeVO treeVO1 = new TreeVO();
+		treeVO1.setId("1");
+		treeVO1.setText("NODE1节点1");
+		TreeVO treeVO2 = new TreeVO();
+		treeVO2.setId("2");
+		treeVO2.setText("NODE2节点2");
+		TreeVO treeVO3 = new TreeVO();
+		treeVO3.setId("3");
+		treeVO3.setText("NODE3节点3");
+		TreeVO treeVO4 = new TreeVO();
+		treeVO4.setId("4");
+		treeVO4.setText("NODE4节点4");
+		TreeVO treeVO5 = new TreeVO();
+		treeVO5.setId("5");
+		treeVO5.setText("NODE5节点5");
+		List<TreeVO> children4 = new ArrayList<TreeVO>();
+		children4.add(treeVO5);
+		treeVO4.setChildren(children4);
+		
+	
+		treeList.add(treeVO1);
+		treeList.add(treeVO2);
+		treeList.add(treeVO3);
+		treeList.add(treeVO4);
+		
+		
+		return treeList;
 	}
 
 	/**
