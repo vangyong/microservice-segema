@@ -35,24 +35,28 @@
 
 | 项目名称                                     | 端口   | 描述                     | URL             |
 | ---------------------------------------- | ---- | ---------------------------- | --------------- |
-| microservice-api-gateway                 | 8040 | API Gateway                   | 详见文章                 
+| microservice-api-gateway                 | 8040 | API Gateway                   | 详见文章        |           
 | microservice-config                      | 8050 | 配置服务                       | 详见文章         |
 | microservice-discovery                   | 8761 | 注册中心                       | /               |
 | microservice-hystrix-turbine             | 8030 | hystrix-turbine监控            | /turbine.stream |
 | microservice-demo                        | 8080 | 实例demo服务                    | /1              |
 | microservice-demo-web                    | 8081 | 实例demo服务WEB                 | /1              |
-| microservice-system                      | 12000 | 系统管理服务                   | /1              |
+| microservice-filecenter                  | 8082 | 文件中心服务                    | /1               |
+| microservice-shiro                       | 8084 | 权限认证服务提供者               | /1               |
+| microservice-auth-server                 | 8086 | 认证服务提供者                   | /1               |
+| microservice-elasticsearch               | 8088 | 全文检索                        | /1               |
+| microservice-mail                        | 8090 | 邮件服务                        | /1               |
+| microservice-system                      | 12000 | 系统管理服务                   | /1               |
 | microservice-system-web                  | 12001 | 系统管理服务WEB                 | /1              |
 | microservice-contract                    | 12002 | 合同管理服务                    | /1              |
 | microservice-contract-web                | 12003 | 合同管理服务WEB                 | /1              |
-| microservice-rabbitmq                    | 12004 | MQ服务提供者                    | /1              |
 | microservice-activiti                    | 12006 | activiti服务                   | /1              |
-| microservice-activiti-web                | 12007 | activiti服务WEB                | /1              |
+| microservice-activiti-designer           | 12007 | activiti设计器服务WEB           | /1              |
 | microservice-flowable                    | 12008 | flowable服务                   | /1              |
 | microservice-flowable-web                | 12009 | flowable服务WEB                | /1              |
 | microservice-performance                 | 12010 | 绩效管理服务                    | /1              |
-| microservice-shiro                       | 12011 | 权限认证服务提供者               | /1              |
-| microservice-filecenter                  | 12012 | 文件中心服务                    | /1              |
-| microservice-broadcast                   | 12013 | 编播系统服务提供者               | /1              |
-| microservice-broadcast-web               | 12014 | 编播系统服务WEB                 | /1              |
-
+| microservice-performance-web             | 12011 | 绩效管理服务                    | /1              |
+| microservice-broadcast                   | 12012 | 编播系统服务提供者               | /1              |
+| microservice-broadcast-web               | 12013 | 编播系统服务WEB                 | /1              |
+| microservice-cms                         | 12014 | 内容管理服务提供者               | /1              |
+| microservice-cms-web                     | 12015 | 内容管理服务WEB                 | /1              |
