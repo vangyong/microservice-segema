@@ -40,4 +40,10 @@ zuul:
     demo-web:                                                           
       path: /demo-web/**                                               
       service-id: microservice-demo-web  
+    cms:                                                           
+      path: /cms/**                                               
+      service-id: microservice-cms   
+    cms-web:                                                           
+      path: /cms-web/**                                               
+      service-id: microservice-cms-web    
       

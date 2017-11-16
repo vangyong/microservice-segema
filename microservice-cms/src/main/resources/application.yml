@@ -2,20 +2,20 @@ server:
   port: 12014
 spring:
   application:
-    name: microservice-demo    # 项目名称尽量用小写
+    name: microservice-cms
   jpa:
-    #database: MYSQL
-    database: POSTGRESQL
+    database: MYSQL
+    #database: POSTGRESQL
     generate-ddl: false
     show-sql: true
     hibernate:
       ddl-auto: update
     properties: 
       hibernate: 
-        dialect : org.hibernate.dialect.MySQL5Dialect
-        #dialect : org.hibernate.dialect.PostgreSQLDialect
+        #dialect : org.hibernate.dialect.MySQL5Dialect
+        dialect : org.hibernate.dialect.PostgreSQLDialect
   datasource:                           # 指定mysql数据源
-    url: jdbc:mysql://127.0.0.1:3306/microservice_demo?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/microservice_cms?useUnicode=true&amp;characterEncoding=utf8
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
