@@ -13,6 +13,7 @@
   </parent>
 
   <dependencies>
+  	<!-- eureka server -->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-eureka-server</artifactId>

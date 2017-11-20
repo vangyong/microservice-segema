@@ -19,6 +19,10 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
+#    plateform: h2
+#    schema: classpath:schema.sql
+#    data: classpath:data.sql 
+    
     
 #  datasource:                           # 指定postgresql数据源
 #    url: jdbc:postgresql://127.0.0.1:5433/microservice_demo

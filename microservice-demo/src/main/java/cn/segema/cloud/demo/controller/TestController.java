@@ -1,5 +1,6 @@
 package cn.segema.cloud.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -13,13 +14,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.segema.cloud.common.page.Pager;
 import cn.segema.cloud.demo.domain.DemoUser;
 import cn.segema.cloud.demo.repository.DemoRepository;
 import cn.segema.cloud.demo.vo.DemoUserPersonalVO;
+import cn.segema.cloud.demo.vo.TestEmployeeVO;
+import cn.segema.cloud.demo.vo.TestGridVO;
 import cn.segema.cloud.demo.vo.TestUserVO;
 
 @RestController
@@ -45,10 +52,31 @@ public class TestController {
 	@PostMapping("/add")
 	public TestUserVO add(TestUserVO user, Model model) {
 		
-		System.out.println("----------------");
+		System.out.println("------user:----------");
 		
 		return user;
 	}
+	
+	@GetMapping("/getTable")
+	public List<TestEmployeeVO> getTable(List<TestEmployeeVO> employees, Model model) {
+		List<DemoUser> userList = demoRepository.findAll();
+		
+		
+		return employees;
+	}
+	
+	@RequestMapping(value="/editTable",method= {RequestMethod.POST})
+	@ResponseBody
+	public List<TestEmployeeVO> editTable(@RequestBody String employeesStr) {
+		//@RequestParam(value = "data[]")long[] data
+		
+		System.out.println("---------employees:"+employeesStr+"-------");
+		
+		List<TestEmployeeVO> employeeList = new ArrayList<TestEmployeeVO>();
+		
+		return employeeList;
+	}
+	
 
 	@RequestMapping(value = "edit")
 	public DemoUser edit(DemoUser user, Model model) {
