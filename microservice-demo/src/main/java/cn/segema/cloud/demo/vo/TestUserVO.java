@@ -3,6 +3,8 @@ package cn.segema.cloud.demo.vo;
 import java.io.Serializable;
 import java.util.Date;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * 测试用户VO
  * 
@@ -13,24 +15,34 @@ public class TestUserVO implements Serializable {
 
 	private static final long serialVersionUID = 3336026114894190728L;
 
+	@ApiModelProperty(value = "姓名")
 	private String txtName;
 
+	@ApiModelProperty(value = "按钮1")
 	private String rbtnl;
 
+	@ApiModelProperty(value = "邮件")
 	private String txtEmail;
 
+	@ApiModelProperty(value = "多选框")
 	private String checkBoxList1$1;
 
+	@ApiModelProperty(value = "创建时间")
 	private String txtDate;
 
+	@ApiModelProperty(value = "年龄")
 	private String txtAge;
 
+	@ApiModelProperty(value = "部门")
 	private String ddlDepart;
 
+	@ApiModelProperty(value = "地址")
 	private String address;
 	
+	@ApiModelProperty(value = "内容1")
 	private String txt1;
 	
+	@ApiModelProperty(value = "备注2")
 	private String txt2;
 
 	public String getTxtName() {

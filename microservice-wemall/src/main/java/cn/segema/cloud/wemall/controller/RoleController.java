@@ -1,4 +1,4 @@
-package cn.segema.cloud.demo.controller;
+package cn.segema.cloud.wemall.controller;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,47 +13,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.segema.cloud.demo.domain.DemoRole;
-import cn.segema.cloud.demo.repository.DemoRoleRepository;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import cn.segema.cloud.wemall.domain.Role;
+import cn.segema.cloud.wemall.repository.RoleRepository;
 
 /**
  * 角色Controller
  */
 @Controller
-@RequestMapping(value = "/demo/role")
-public class DemoRoleController {
+@RequestMapping(value = "/role")
+public class RoleController {
 
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
 	@Autowired
-	private DemoRoleRepository roleRepository;
+	private RoleRepository roleRepository;
 
-	@ApiOperation(value="获取角色信息", notes="根据id获取角色信息")
-	  @ApiImplicitParams({  
-	          @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "String", paramType="path")  
-	  })
+	/**
+	   * 注：@GetMapping("/{id}")是spring 4.3的新注解等价于：
+	   * @RequestMapping(value = "/id", method = RequestMethod.GET)
+	   * 类似的注解还有@PostMapping等等
+	   * @param id
+	   * @return Role信息
+	   */
 	@GetMapping("/{id}")
-	public DemoRole findById(@PathVariable String id) {
-		DemoRole findOne = this.roleRepository.findOne(id);
+	public Role findById(@PathVariable String id) {
+		Role findOne = this.roleRepository.findOne(id);
 		return findOne;
 	}
 
-	@ApiOperation(value="获取角色列表", notes="根据条件获取角色列表")
-	  @ApiImplicitParams({  
-	          @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "String", paramType="path")  
-	  })
 	@GetMapping("/list")
-	public List<DemoRole> list(DemoRole role, Model model) {
-		List<DemoRole> list = roleRepository.findAll();
+	public List<Role> list(Role role, Model model) {
+		List<Role> list = roleRepository.findAll();
 		return list;
 	}
 
 	@PostMapping("/add")
-	public DemoRole add(DemoRole role, Model model) {
+	public Role add(Role role, Model model) {
 		if (role.getRoleId() == null || "".equals(role.getRoleId())) {
 			role.setRoleId(UUID.randomUUID().toString());
 		}
@@ -62,13 +58,14 @@ public class DemoRoleController {
 	}
 
 	@RequestMapping(value = "edit")
-	public DemoRole edit(DemoRole role, Model model) {
+	public Role edit(Role role, Model model) {
+		Long a = 2L;
 		roleRepository.save(role);
 		return role;
 	}
 
 	@RequestMapping(value = "delete")
-	public DemoRole delete(DemoRole role) {
+	public Role delete(Role role) {
 		roleRepository.delete(role);
 		return role;
 	}

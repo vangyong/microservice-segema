@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,57 +25,57 @@ import cn.segema.cloud.demo.domain.DemoUser;
 import cn.segema.cloud.demo.repository.DemoRepository;
 import cn.segema.cloud.demo.vo.DemoUserPersonalVO;
 import cn.segema.cloud.demo.vo.TestEmployeeVO;
-import cn.segema.cloud.demo.vo.TestGridVO;
 import cn.segema.cloud.demo.vo.TestUserVO;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/test")
-public class TestController {
-  @Autowired
-  private DiscoveryClient discoveryClient;
-  @Autowired
-  private DemoRepository demoRepository;
+@RequestMapping(value = "/demo/user")
+public class DemoUserController {
+	@Autowired
+	private DiscoveryClient discoveryClient;
+	@Autowired
+	private DemoRepository demoRepository;
 
-  @GetMapping("/{userId}")
-  public DemoUser findById(@PathVariable String userId) {
-    DemoUser findOne = this.demoRepository.findOne(userId);
-    return findOne;
-  }
-  
-  @GetMapping("/list")
+	@GetMapping("/{userId}")
+	public DemoUser findById(@PathVariable String userId) {
+		DemoUser findOne = this.demoRepository.findOne(userId);
+		return findOne;
+	}
+
+	@GetMapping("/list")
 	public List<DemoUser> list(DemoUser user, Model model) {
 		List<DemoUser> userList = demoRepository.findAll();
 		return userList;
 	}
 
+	@ApiOperation(value="新增用户信息", notes="新增用户信息")
 	@PostMapping("/add")
 	public TestUserVO add(TestUserVO user, Model model) {
-		
+
 		System.out.println("------user:----------");
-		
+
 		return user;
 	}
-	
+
 	@GetMapping("/getTable")
 	public List<TestEmployeeVO> getTable(List<TestEmployeeVO> employees, Model model) {
 		List<DemoUser> userList = demoRepository.findAll();
-		
-		
+
 		return employees;
 	}
-	
-	@RequestMapping(value="/editTable",method= {RequestMethod.POST})
+
+	@RequestMapping(value = "/editTable", method = { RequestMethod.POST })
 	@ResponseBody
 	public List<TestEmployeeVO> editTable(@RequestBody String employeesStr) {
-		//@RequestParam(value = "data[]")long[] data
-		
-		System.out.println("---------employees:"+employeesStr+"-------");
-		
+		// @RequestParam(value = "data[]")long[] data
+
+		System.out.println("---------employees:" + employeesStr + "-------");
+
 		List<TestEmployeeVO> employeeList = new ArrayList<TestEmployeeVO>();
-		
+
 		return employeeList;
 	}
-	
 
 	@RequestMapping(value = "edit")
 	public DemoUser edit(DemoUser user, Model model) {
@@ -91,19 +90,20 @@ public class TestController {
 		demoRepository.delete(user);
 		return user;
 	}
-  
-  /**
-   * 关联实体查询
-   * @param userName
-   * @return
-   */
-  @GetMapping("/listUserPersonalByUserName/{userName}") 
-  public List<DemoUserPersonalVO> listUserPersonalByUserName(@PathVariable String userName) {
-	  List<DemoUserPersonalVO> userList = demoRepository.findUserPersonalByUserName(userName);
-	  return userList;
+
+	/**
+	 * 关联实体查询
+	 * 
+	 * @param userName
+	 * @return
+	 */
+	@GetMapping("/listUserPersonalByUserName/{userName}")
+	public List<DemoUserPersonalVO> listUserPersonalByUserName(@PathVariable String userName) {
+		List<DemoUserPersonalVO> userList = demoRepository.findUserPersonalByUserName(userName);
+		return userList;
 	}
- 
-  @GetMapping("/listByPage")
+
+	@GetMapping("/listByPage")
 	public Pager<DemoUser> listByPage() {
 		Sort sort = new Sort(Direction.DESC, "userId");
 		Pageable pageable = new PageRequest(0, 30, sort);
@@ -115,14 +115,15 @@ public class TestController {
 		pager.setData(page.getContent());
 		return pager;
 	}
-  
-  /**
-   * 本地服务实例的信息
-   * @return
-   */
-  @GetMapping("/instance-info")
-  public ServiceInstance showInfo() {
-    ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
-    return localServiceInstance;
-  }
+
+	/**
+	 * 本地服务实例的信息
+	 * 
+	 * @return
+	 */
+	@GetMapping("/instance-info")
+	public ServiceInstance showInfo() {
+		ServiceInstance localServiceInstance = this.discoveryClient.getLocalServiceInstance();
+		return localServiceInstance;
+	}
 }
