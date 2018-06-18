@@ -28,7 +28,7 @@ public class DemoController {
           @ApiImplicitParam(name = "id", value = "SonarUrl表ID", required = true, dataType = "Long", paramType="path")  
   })
   @GetMapping("/{id}")
-  public Map findById(@PathVariable String id) {
+  public Map findById(@PathVariable Long id) {
 	  Map map = new HashMap<String,String>();
 	  map.put("key1", "value1");
 	  map.put("key2", "value2");
