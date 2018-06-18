@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ public class DemoConfigController {
   private DiscoveryClient discoveryClient;
   @Autowired
   private DemoRepository demoRepository;
+  
+  @Value("${demo.local.directory}")
+  private String demoLocalDirectory;
 
   @ApiOperation(value="获取项目组Sonar对应的Url信息", notes="根据id获取项目组Sonar对应的Url信息")// 使用该注解描述接口方法信息  
   @ApiImplicitParams({  
@@ -33,6 +37,7 @@ public class DemoConfigController {
 	  map.put("key1", "value1");
 	  map.put("key2", "value2");
 	  map.put("key3", "value3");
+	  map.put("demoLocalDirectory", demoLocalDirectory);
 	  return map;
   }
   
