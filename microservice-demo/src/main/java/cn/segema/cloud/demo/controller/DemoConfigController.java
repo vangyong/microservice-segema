@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-//@RefreshScope
+@RefreshScope
 @RequestMapping(value = "/demo/config")
 public class DemoConfigController {
   @Autowired
