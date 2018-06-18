@@ -1,6 +1,6 @@
 server:
   port: 8080
-spring:
+spring: 
   application:
     name: microservice-demo    # 项目名称尽量用小写
   jpa:
