@@ -41,12 +41,12 @@ spring:
 #      min-idle: 0
 #    timeout: 0
 
-#rabbitmq:                               # 指定rabbitmq源
-#     addresses: 127.0.0.1:5672
-#     username: guest
-#     password: guest
-#     virtual-host: / 
-
+rabbitmq:                               # 指定rabbitmq源
+     addresses: 127.0.0.1:5672
+     username: springcloud
+     password: springcloud
+     virtual-host: /
+     
 logging:
   level:
     root: INFO

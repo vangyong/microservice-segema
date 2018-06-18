@@ -41,7 +41,8 @@ public class UserController {
    */
   @GetMapping("/{userId}")
   public User findById(@PathVariable String userId) throws Exception {
-    User user = this.userRepository.findOne(userId);
+
+	  User user = this.userRepository.findOne(userId);
     return user;
   }
   

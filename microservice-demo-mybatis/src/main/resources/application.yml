@@ -1,24 +1,16 @@
 server:
-  port: 12000
-  #port: 8080
+  port: 8080
 spring:
   application:
-    name: microservice-system    
-  jpa: 
-    database: MYSQL
-    generate-ddl: false
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties: 
-      hibernate: 
-        dialect : org.hibernate.dialect.MySQL5Dialect
-  datasource:                       
-    url: jdbc:mysql://127.0.0.1:3306/microservice_system?useUnicode=true&amp;characterEncoding=utf8
+    name: microservice-demo-mybatis
+  datasource:
     driverClassName: com.mysql.jdbc.Driver
-    username: root  
+    url: jdbc:mysql://127.0.0.1:3306/microservice_demo?useUnicode=true&amp;characterEncoding=utf8
+    username: root
     password: root
-#  redis: 
+mybatis:
+  type-aliases-package: cn.segema.cloud.demo.domain 
+#  redis:                               # 指定redis数据源
 #    database: 0
 #    host: 127.0.0.1
 #    port: 6379
@@ -29,19 +21,25 @@ spring:
 #      max-idle: 8
 #      min-idle: 0
 #    timeout: 0
+
+#rabbitmq:                               # 指定rabbitmq源
+#     addresses: 127.0.0.1:5672
+#     username: guest
+#     password: guest
+#     virtual-host: / 
+
 logging:
   level:
     root: INFO
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
-    #com.itmuch.youran.persistence: ERROR
+    com.itmuch.youran.persistence: ERROR
 eureka:
   client:
-    #healthcheck: 
-     # enabled: true
-    serviceUrl: 
+    serviceUrl:
       defaultZone: http://discovery:8761/eureka/    # 指定注册中心的地址
   instance:
+    hostname: demo
     preferIpAddress: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}

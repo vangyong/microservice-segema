@@ -39,6 +39,7 @@
 | microservice-config                      | 8050 | 配置服务                       | 详见文章         |
 | microservice-discovery                   | 8761 | 注册中心                       | /               |
 | microservice-hystrix-turbine             | 8030 | hystrix-turbine监控            | /turbine.stream |
+| microservice-hystrix-dashboard           | 8060 | hystrix-dashboard监控          | /hystrix.stream |
 | microservice-demo                        | 8080 | 实例demo服务                    | /1              |
 | microservice-demo-web                    | 8081 | 实例demo服务WEB                 | /1              |
 | microservice-filecenter                  | 8082 | 文件中心服务                    | /1               |

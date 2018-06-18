@@ -17,6 +17,12 @@ spring:
 #    driverClassName: com.mysql.jdbc.Driver
 #    username: root  
 #    password: root 
+
+#rabbitmq:                               # 指定rabbitmq源
+#     addresses: 127.0.0.1:5672
+#     username: springcloud
+#     password: springcloud
+#     virtual-host: / 
     
 logging:
   level:
