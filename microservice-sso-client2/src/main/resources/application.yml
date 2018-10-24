@@ -1,0 +1,52 @@
+server:
+  port: 8081
+  context-path: /client2
+spring:
+  application:
+    name: microservice-sso-client2
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/microservice_system?useUnicode=true&amp;characterEncoding=utf8
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: cn.segema.cloud.demo.domain 
+#  redis:                               # 指定redis数据源
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    password: 123456
+#    pool: 
+#      max-active: 8
+#      max-wait: -1
+#      max-idle: 8
+#      min-idle: 0
+#    timeout: 0
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+  instance:
+    hostname: demo
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+security:
+  oauth2:
+    client:
+      client-id: segema2
+      client-secret: segemasecret2
+      user-authorization-uri: http://127.0.0.1:9999/sso-server/oauth/authorize
+      access-token-uri: http://127.0.0.1:9999/sso-server/oauth/token
+    resource:
+      jwt:
+        key-uri: http://127.0.0.1:9999/sso-server/oauth/token_key   
+
+
+    
+      
