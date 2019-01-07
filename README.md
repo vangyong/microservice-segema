@@ -1,6 +1,8 @@
 # 项目简介
 本项目是《使用Spring Cloud与Docker实战微服务》：
 
+采用springboot-1.x开发
+
 
 内容主要包含：
 
