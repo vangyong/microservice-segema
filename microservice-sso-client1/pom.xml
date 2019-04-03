@@ -12,10 +12,10 @@
 	</parent>
 
 	<dependencies>
-		<!-- 添加Eureka的依赖 -->
+		<!-- 添加Eureka 客户端的依赖 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 
 		<!-- mybatis -->

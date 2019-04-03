@@ -15,6 +15,7 @@
     <module>microservice-discovery</module>
     <module>microservice-hystrix-turbine</module>
     <module>microservice-demo</module>
+    <module>microservice-demo-mybatis</module>
     <module>microservice-demo-web</module>
     <module>microservice-filecenter</module>
     <module>microservice-shiro</module>
