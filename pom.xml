@@ -26,7 +26,6 @@
     <module>microservice-mail</module>
     <module>microservice-system</module>
     <module>microservice-system-web</module>
-    <module>microservice-wemall</module>
     <module>microservice-activiti</module>
     <module>microservice-activiti-designer</module>
     <module>microservice-flowable</module>

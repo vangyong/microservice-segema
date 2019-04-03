@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import cn.segema.cloud.system.domain.Organization;
 import cn.segema.cloud.system.vo.OrganizationPersonalVO;
-import cn.segema.cloud.system.vo.OrganizationTreeVO;
 
 @Repository
 public interface OrganizationRepository extends PagingAndSortingRepository<Organization, String>,JpaRepository<Organization, String>,JpaSpecificationExecutor<Organization>{
