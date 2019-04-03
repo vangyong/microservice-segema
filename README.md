@@ -57,9 +57,3 @@
 | microservice-activiti-designer           | 12007 | activiti设计器服务WEB           | /1              |
 | microservice-flowable                    | 12008 | flowable服务                   | /1              |
 | microservice-flowable-web                | 12009 | flowable服务WEB                | /1              |
-| microservice-performance                 | 12010 | 绩效管理服务                    | /1              |
-| microservice-performance-web             | 12011 | 绩效管理服务                    | /1              |
-| microservice-broadcast                   | 12012 | 编播系统服务提供者               | /1              |
-| microservice-broadcast-web               | 12013 | 编播系统服务WEB                 | /1              |
-| microservice-cms                         | 12014 | 内容管理服务提供者               | /1              |
-| microservice-cms-web                     | 12015 | 内容管理服务WEB                 | /1              |
