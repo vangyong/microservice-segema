@@ -18,10 +18,14 @@
     <module>microservice-demo-web</module>
     <module>microservice-filecenter</module>
     <module>microservice-shiro</module>
+    <module>microservice-sso-client1</module>
+    <module>microservice-sso-client2</module>
+    <module>microservice-sso-server</module>
     <module>microservice-auth-server</module>
     <module>microservice-mail</module>
     <module>microservice-system</module>
     <module>microservice-system-web</module>
+    <module>microservice-wemall</module>
     <module>microservice-activiti</module>
     <module>microservice-activiti-designer</module>
     <module>microservice-flowable</module>
