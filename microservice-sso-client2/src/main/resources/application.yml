@@ -6,7 +6,7 @@ spring:
     name: microservice-sso-client2
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/microservice_system?useUnicode=true&amp;characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/springcloud1-microservice?useUnicode=true&amp;characterEncoding=utf8
     username: root
     password: root
 mybatis:
@@ -31,7 +31,7 @@ logging:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: demo
     preferIpAddress: true

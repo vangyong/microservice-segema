@@ -1,4 +1,4 @@
-package cn.segema.cloud.auth.client.vo;
+package cn.segema.cloud.sso.client2.vo;
 
 import java.io.Serializable;
 

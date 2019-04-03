@@ -1,4 +1,4 @@
-package cn.segema.cloud.auth.client;
+package cn.segema.cloud.sso.client2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

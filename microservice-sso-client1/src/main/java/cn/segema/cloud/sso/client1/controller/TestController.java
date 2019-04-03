@@ -1,4 +1,4 @@
-package cn.segema.cloud.auth.client.controller;
+package cn.segema.cloud.sso.client1.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;

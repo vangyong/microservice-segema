@@ -13,7 +13,7 @@ spring:
       hibernate: 
         dialect : org.hibernate.dialect.MySQL5Dialect
   datasource:                       
-    url: jdbc:mysql://127.0.0.1:3306/springcloud1.x-microservice?useUnicode=true&amp;characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/springcloud1-microservice?useUnicode=true&amp;characterEncoding=utf8
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root

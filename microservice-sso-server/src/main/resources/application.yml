@@ -7,7 +7,7 @@ spring:
   application:
     name: microservice-sso-server
   datasource:                       
-    url: jdbc:mysql://127.0.0.1:3306/microservice_system?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/springcloud1-microservice?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false
     driverClassName: com.mysql.jdbc.Driver
     username: root  
     password: root
@@ -16,7 +16,7 @@ eureka:
     hostname: sso-server
   client:
     serviceUrl: 
-      defaultZone: http://discovery:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
   redis:                               # 指定redis数据源
     database: 0
