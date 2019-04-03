@@ -1,63 +1,28 @@
 package cn.segema.cloud.system.vo;
 
-/**
- * 用户人员信息
- * @author wangyong
- *
- */
-public class UserPersonalVO {
+import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.List;
 
-	private String userId;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+
+
+@ApiModel("用户人员信息VO")
+@Data
+public class UserPersonalVO implements Serializable{
+
+	private BigInteger userId;
 
 	private String userName;
 
 	private String nickName;
 	
-	private String personalId;
+	private BigInteger personalId;
 	
 	private String personalName;
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getNickName() {
-		return nickName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
-	public String getPersonalId() {
-		return personalId;
-	}
-
-	public void setPersonalId(String personalId) {
-		this.personalId = personalId;
-	}
-
-	public String getPersonalName() {
-		return personalName;
-	}
-
-	public void setPersonalName(String personalName) {
-		this.personalName = personalName;
-	}
-
-	public UserPersonalVO(String userId, String userName, String nickName, String personalId, String personalName) {
+	
+	public UserPersonalVO(BigInteger userId, String userName, String nickName, BigInteger personalId, String personalName) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -65,6 +30,5 @@ public class UserPersonalVO {
 		this.personalId = personalId;
 		this.personalName = personalName;
 	}
-
 	
 }

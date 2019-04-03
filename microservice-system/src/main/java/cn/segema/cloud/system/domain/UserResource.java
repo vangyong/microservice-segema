@@ -1,5 +1,7 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,48 +9,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- * 用户-资源关系
- * @author wangyong
- *
- */
-@Table(name = "SYS_USER_RESOURCE")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("用户资源关系")
+@Data
+@Table(name = "sys_user_resource")
 @Entity
 public class UserResource {
+	@ApiModelProperty(value="用户资源关系id")
 	@Id
-	@Column(name = "USERRESOURCEID")
-	private String userResourceId;
+	@Column(name = "user_resource_id")
+	private BigInteger userResourceId;
 
+	@ApiModelProperty(value="用户id")
 	@OneToOne
-	@JoinColumn(name = "USERID")
+	@JoinColumn(name = "user_id")
 	private User user;
 
+	@ApiModelProperty(value="资源id")
 	@OneToOne
-	@JoinColumn(name = "RESOURCEID")
+	@JoinColumn(name = "resource_id")
 	private Resource resource;
 
-	public String getUserResourceId() {
-		return userResourceId;
-	}
-
-	public void setUserResourceId(String userResourceId) {
-		this.userResourceId = userResourceId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Resource getResource() {
-		return resource;
-	}
-
-	public void setResource(Resource resource) {
-		this.resource = resource;
-	}
 
 }

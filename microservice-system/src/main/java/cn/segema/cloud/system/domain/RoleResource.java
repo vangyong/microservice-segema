@@ -1,5 +1,7 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,50 +9,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- * 角色-资源关系
- * @author wangyong
- *
- */
-@Table(name = "SYS_ROLE_RESOURCE")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("角色资源关系")
+@Data
+@Table(name = "sys_role_resource")
 @Entity
 public class RoleResource {
+	@ApiModelProperty(value="角色资源关系id")
 	@Id
-	@Column(name = "ROLERESOURCEID")
-	private String roleResourceId;
+	@Column(name = "role_resource_id")
+	private BigInteger roleResourceId;
 
+	@ApiModelProperty(value="角色id")
 	@OneToOne
-	@JoinColumn(name = "ROLEID")
+	@JoinColumn(name = "role_id")
 	private Role role;
 
+	@ApiModelProperty(value="资源id")
 	@OneToOne
-	@JoinColumn(name = "RESOURCEID")
+	@JoinColumn(name = "resource_id")
 	private Resource resource;
-
-	public String getRoleResourceId() {
-		return roleResourceId;
-	}
-
-	public void setRoleResourceId(String roleResourceId) {
-		this.roleResourceId = roleResourceId;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public Resource getResource() {
-		return resource;
-	}
-
-	public void setResource(Resource resource) {
-		this.resource = resource;
-	}
-
-	
 
 }

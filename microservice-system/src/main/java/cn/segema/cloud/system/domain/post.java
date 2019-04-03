@@ -1,72 +1,48 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 岗位
- * @author wangyong
- *
- */
-@Table(name = "SYS_POST")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("岗位")
+@Data
+@Table(name = "sys_post")
 @Entity
 public class post {
+	@ApiModelProperty(value="岗位id")
 	@Id
-	@Column(name = "POSTID")
-	private String postId;
+	@Column(name = "post_id")
+	private BigInteger postId;
 	
-	@Column(name = "POSTNAME")
+	@ApiModelProperty(value="岗位名称")
+	@Column(name = "post_name")
 	private String postName;
 	
-	@Column(name = "POSTCODE")
+	@ApiModelProperty(value="岗位编码")
+	@Column(name = "post_code")
 	private String systemCode;
 	
-	@Column(name = "DESCRIPTION")
+	@ApiModelProperty(value="描述")
+	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "DELETESTATUS")
-	private Integer deletestatus;
-
-	public String getPostId() {
-		return postId;
-	}
-
-	public void setPostId(String postId) {
-		this.postId = postId;
-	}
-
-	public String getPostName() {
-		return postName;
-	}
-
-	public void setPostName(String postName) {
-		this.postName = postName;
-	}
-
-	public String getSystemCode() {
-		return systemCode;
-	}
-
-	public void setSystemCode(String systemCode) {
-		this.systemCode = systemCode;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getDeletestatus() {
-		return deletestatus;
-	}
-
-	public void setDeletestatus(Integer deletestatus) {
-		this.deletestatus = deletestatus;
-	}
-
+	@ApiModelProperty(value="删除标示")
+	@Column(name = "delete_status")
+	private Integer deleteStatus;
+	
+	@ApiModelProperty(value="创建时间")
+	@Column(name = "create_time")
+	private BigInteger createTime;
+	
+    @ApiModelProperty(value="租户id")
+    @Column(name = "tenant_id")
+    private BigInteger tenantId;
+	
 }

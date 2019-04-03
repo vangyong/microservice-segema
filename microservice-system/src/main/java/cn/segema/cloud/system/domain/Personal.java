@@ -1,186 +1,88 @@
 package cn.segema.cloud.system.domain;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 人员
- * @author wangyong
- *
- */
-@Table(name = "SYS_PERSONAL")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("人员信息")
+@Data
+@Table(name = "sys_personal")
 @Entity
 public class Personal {
+	@ApiModelProperty(value="人员id")
 	@Id
-	@Column(name = "PERSONALID")
-	private String personalId;
-	
-	@Column(name = "PERSONALNAME")
+	@Column(name = "personal_id")
+	private BigInteger personalId;
+
+	@ApiModelProperty(value="人员名字")
+	@Column(name = "personal_name")
 	private String personalName;
-	
-	@Column(name = "MOBILENUMBER")
+
+	@ApiModelProperty(value="手机号码")
+	@Column(name = "mobile_number")
 	private String mobileNumber;
-	
-	@Column(name = "GENDER")
-	private String gender;
-	
-	@Column(name = "BORNADDRESSID")
-	private String bornAddressId;
-	
-	@Column(name = "BORNTIME")
-	private LocalDateTime bornTime;
-	
-	@Column(name = "WEIGHT")
+
+	@ApiModelProperty(value="性别")
+	@Column(name = "gender")
+	private Integer gender;
+
+	@ApiModelProperty(value="出生地址")
+	@Column(name = "born_address_id")
+	private BigInteger bornAddressId;
+
+	@ApiModelProperty(value="出生时间")
+	@Column(name = "born_time")
+	private BigInteger bornTime;
+
+	@ApiModelProperty(value="体重")
+	@Column(name = "weight")
 	private BigDecimal weight;
-	
-	@Column(name = "HEIGHT")
+
+	@ApiModelProperty(value="身高")
+	@Column(name = "height")
 	private BigDecimal height;
-	
-	@Column(name = "BLOODTYPE")
+
+	@ApiModelProperty(value="血型")
+	@Column(name = "blood_type")
 	private BigDecimal bloodType;
-	
-	@Column(name = "EMAIL")
+
+	@ApiModelProperty(value="邮件")
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name = "HOMEADDRESSID")
-	private String homeAddressId;
-	
-	@Column(name = "GROUPID")
-	private String groupId;
-	
-	@Column(name = "NATION")
-	private String nation;
-	
-	@Column(name = "IDENTITYNUMBER")
-	private String identityNumber;
-	
-	@Column(name = "CREATETIME")
-	private LocalDateTime createTime;
 
+	@ApiModelProperty(value="家庭住址")
+	@Column(name = "home_address_id")
+	private BigInteger homeAddressId;
 
-	public String getPersonalId() {
-		return personalId;
-	}
+	@ApiModelProperty(value="组id")
+	@Column(name = "group_id")
+	private BigInteger groupId;
 
-	public void setPersonalId(String personalId) {
-		this.personalId = personalId;
-	}
+	@ApiModelProperty(value="证件类型")
+	@Column(name = "id_card_type")
+	private Integer idCardType;
 
-	public String getPersonalName() {
-		return personalName;
-	}
+	@ApiModelProperty(value="证件号码")
+	@Column(name = "identity_card")
+	private String identityCard;
 
-	public void setPersonalName(String personalName) {
-		this.personalName = personalName;
-	}
+	@ApiModelProperty(value="删除标示")
+	@Column(name = "delete_status")
+	private Integer deleteStatus;
 
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
+	@ApiModelProperty(value="创建时间")
+	@Column(name = "create_time")
+	private BigInteger createTime;
 
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getBornAddressId() {
-		return bornAddressId;
-	}
-
-	public void setBornAddressId(String bornAddressId) {
-		this.bornAddressId = bornAddressId;
-	}
-
-	public LocalDateTime getBornTime() {
-		return bornTime;
-	}
-
-	public void setBornTime(LocalDateTime bornTime) {
-		this.bornTime = bornTime;
-	}
-
-	public BigDecimal getWeight() {
-		return weight;
-	}
-
-	public void setWeight(BigDecimal weight) {
-		this.weight = weight;
-	}
-
-	public BigDecimal getHeight() {
-		return height;
-	}
-
-	public void setHeight(BigDecimal height) {
-		this.height = height;
-	}
-
-	public BigDecimal getBloodType() {
-		return bloodType;
-	}
-
-	public void setBloodType(BigDecimal bloodType) {
-		this.bloodType = bloodType;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getHomeAddressId() {
-		return homeAddressId;
-	}
-
-	public void setHomeAddressId(String homeAddressId) {
-		this.homeAddressId = homeAddressId;
-	}
-
-	public String getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(String groupId) {
-		this.groupId = groupId;
-	}
-
-	public String getNation() {
-		return nation;
-	}
-
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
-
-	public String getIdentityNumber() {
-		return identityNumber;
-	}
-
-	public void setIdentityNumber(String identityNumber) {
-		this.identityNumber = identityNumber;
-	}
-
-	public LocalDateTime getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(LocalDateTime createTime) {
-		this.createTime = createTime;
-	}
-
+    @ApiModelProperty(value="租户id")
+    @Column(name = "tenant_id")
+    private BigInteger tenantId;
 }

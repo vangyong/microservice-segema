@@ -3,9 +3,9 @@ package cn.segema.cloud.common.page;
 import java.util.List;
 
 public class Pager<T>{
-	private String code;
+	private String code ="1000";
 	
-	private String msg;
+	private String msg ="success";
 	
 	private long count;
 	

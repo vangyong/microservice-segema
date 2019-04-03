@@ -8,7 +8,7 @@
 
 	<parent>
 		<groupId>cn.segema.cloud</groupId>
-		<artifactId>springcloud1.x-microservice</artifactId>
+		<artifactId>springcloud1-microservice</artifactId>
 		<version>0.0.1</version>
 	</parent>
 

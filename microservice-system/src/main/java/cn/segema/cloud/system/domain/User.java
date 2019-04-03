@@ -1,105 +1,70 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
-/**
- * 用户
- * @author wangyong
- *
- */
-@Table(name = "SYS_USER")
+@ApiModel("用户")
+@Data
+@Table(name = "sys_user")
 @Entity
 public class User {
-	@Id
-	@Column(name = "USERID")
-	private String userId;
-	
-	@Column(name = "USERNAME")
-	private String userName;
-	
-	@Column(name = "NICKNAME")
-	private String nickName;
-	
-	@Column(name = "PASSWORD")
-	private String password;
-	
-	@Column(name = "MOBILENUMBER")
-	private String mobileNumber;
-	
-	@Column(name = "CREDENTIALSSALT")
-	private String credentialsSalt;
-	
-	@Column(name = "GENDER")
-	private Integer gender;
-	
-	@Column(name = "DELETESTATUS")
-	private Integer deletestatus;
+    @ApiModelProperty(value = "用户id")
+    @Id
+    @Column(name = "user_id")
+    private BigInteger userId;
 
-	public String getUserId() {
-		return userId;
-	}
+    @ApiModelProperty(value = "用户名称")
+    @Column(name = "user_name")
+    private String userName;
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    @ApiModelProperty(value = "昵称")
+    @Column(name = "nick_name")
+    private String nickName;
 
-	public String getUserName() {
-		return this.userName;
-	}
+    @ApiModelProperty(value = "密码")
+    @Column(name = "password")
+    private String password;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    @ApiModelProperty(value = "手机号码")
+    @Column(name = "mobile_number")
+    private String mobileNumber;
 
-	public String getNickName() {
-		return nickName;
-	}
+    @ApiModelProperty(value = "盐值")
+    @Column(name = "credentials_salt")
+    private String credentialsSalt;
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
+    @ApiModelProperty(value = "性别")
+    @Column(name = "gender")
+    private Integer gender;
 
-	public String getPassword() {
-		return password;
-	}
+    @ApiModelProperty(value = "删除标示")
+    @Column(name = "delete_status")
+    private Integer deleteStatus;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @ApiModelProperty(value = "创建时间")
+    @Column(name = "create_time")
+    private BigInteger createTime;
 
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
+    @ApiModelProperty(value = "租户id")
+    @Column(name = "tenant_id")
+    private BigInteger tenantId;
 
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
+    @ApiModelProperty(value = "openid")
+    @Column(name = "open_id")
+    private String openId;
 
-	public String getCredentialsSalt() {
-		return credentialsSalt;
-	}
+    @ApiModelProperty(value = "第三方类型")
+    @Column(name = "third_party_type")
+    private String thirdPartyType;
 
-	public void setCredentialsSalt(String credentialsSalt) {
-		this.credentialsSalt = credentialsSalt;
-	}
-	
-	public Integer getGender() {
-		return gender;
-	}
-
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
-
-	public Integer getDeletestatus() {
-		return deletestatus;
-	}
-
-	public void setDeletestatus(Integer deletestatus) {
-		this.deletestatus = deletestatus;
-	}
+    @ApiModelProperty(value = "头像url")
+    @Column(name = "avatar_url")
+    private String avatarUrl;
 
 }

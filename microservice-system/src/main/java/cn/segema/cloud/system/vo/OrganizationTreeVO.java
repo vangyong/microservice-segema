@@ -1,47 +1,24 @@
 package cn.segema.cloud.system.vo;
 
+import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
-public class OrganizationTreeVO {
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
 
-	private String organizationId;
+@ApiModel("组织机构人员信息")
+@Data
+public class OrganizationTreeVO implements Serializable{
+
+	private static final long serialVersionUID = 7846035097759913796L;
+
+	private BigInteger organizationId;
 
 	private String organizationName;
 
-	private Integer organizationCode;
+	private BigInteger organizationCode;
 
 	private List<OrganizationTreeVO> children;
-
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
-	}
-
-	public String getOrganizationName() {
-		return organizationName;
-	}
-
-	public void setOrganizationName(String organizationName) {
-		this.organizationName = organizationName;
-	}
-
-	public Integer getOrganizationCode() {
-		return organizationCode;
-	}
-
-	public void setOrganizationCode(Integer organizationCode) {
-		this.organizationCode = organizationCode;
-	}
-
-	public List<OrganizationTreeVO> getChildren() {
-		return children;
-	}
-
-	public void setChildren(List<OrganizationTreeVO> children) {
-		this.children = children;
-	}
 
 }

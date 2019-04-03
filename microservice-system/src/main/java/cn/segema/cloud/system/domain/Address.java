@@ -1,154 +1,53 @@
 package cn.segema.cloud.system.domain;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 地址
- * @author wangyong
- *
- */
-@Table(name = "SYS_ADDRESS")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("地址")
+@Data
+@Table(name = "sys_address")
 @Entity
 public class Address {
+	@ApiModelProperty(value="地址id")
 	@Id
-	@Column(name = "ADDRESSID")
-	private String addressId;
+	@Column(name = "address_id")
+	private BigInteger addressId;
 	
-	@Column(name = "NATION")
-	private String nation;
+	@ApiModelProperty(value="地区编码")
+	@Column(name = "region_code")
+	private String regionCode;
 	
-	@Column(name = "PROVINCE")
-	private String province;
+	@ApiModelProperty(value="详细(社区街道及门牌号)")
+    @Column(name = "detail_content")
+    private String detailContent;
 	
-	@Column(name = "CITY")
-	private String city;
+	@ApiModelProperty(value="描述")
+	@Column(name = "description")
+	private String description;
 	
-	@Column(name = "COUNTRY")
-	private String country;
+	@ApiModelProperty(value="经度")
+	@Column(name = "longitude")
+	private BigDecimal longitude;
 	
-	@Column(name = "TOWN")
-	private String town;
+	@ApiModelProperty(value="纬度")
+	@Column(name = "latitude")
+	private BigDecimal latitude;
 	
-	@Column(name = "VILLAGE")
-	private String village;
+	@ApiModelProperty(value="删除标示")
+	@Column(name = "delete_status")
+	private Integer deleteStatus;
 	
-	@Column(name = "STREET")
-	private String street;
+	@ApiModelProperty(value="创建时间")
+	@Column(name = "create_time")
+	private BigInteger createTime;
 	
-	@Column(name = "DISTRICT")
-	private String district;
-	
-	@Column(name = "DOORNUMBER")
-	private BigDecimal doorNumber;
-	
-	@Column(name = "LONGITUDE")
-	private String longitude;
-	
-	@Column(name = "LATITUDE")
-	private String latitude;
-
-	public String getAddressId() {
-		return addressId;
-	}
-
-	public void setAddressId(String addressId) {
-		this.addressId = addressId;
-	}
-
-	public String getNation() {
-		return nation;
-	}
-
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
-
-	public String getProvince() {
-		return province;
-	}
-
-	public void setProvince(String province) {
-		this.province = province;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getTown() {
-		return town;
-	}
-
-	public void setTown(String town) {
-		this.town = town;
-	}
-
-	public String getVillage() {
-		return village;
-	}
-
-	public void setVillage(String village) {
-		this.village = village;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getDistrict() {
-		return district;
-	}
-
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-
-	public BigDecimal getDoorNumber() {
-		return doorNumber;
-	}
-
-	public void setDoorNumber(BigDecimal doorNumber) {
-		this.doorNumber = doorNumber;
-	}
-
-	public String getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-
 }

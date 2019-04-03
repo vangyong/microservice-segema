@@ -1,5 +1,6 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,92 +13,55 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-/**
- * 组织机构
- * @author wangyong
- *
- */
-@Table(name = "SYS_ORGANIZATION")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("组织机构")
+@Data
+@Table(name = "sys_organization")
 @Entity
 public class Organization {
+	@ApiModelProperty(value="组织机构id")
 	@Id
-	@Column(name = "ORGANIZATIONID")
-	private String organizationId;
+	@Column(name = "organization_id")
+	private BigInteger organizationId;
 
-	@Column(name = "ORGANIZATIONNAME")
+	@ApiModelProperty(value="组织机构名称")
+	@Column(name = "organization_name")
 	private String organizationName;
 
-	@Column(name = "ORGANIZATIONCODE")
-	private Integer organizationCode;
+	@ApiModelProperty(value="组织机构编码")
+	@Column(name = "organization_code")
+	private BigInteger organizationCode;
 
-	@Column(name = "DESCRIPTION")
+	@ApiModelProperty(value="描述")
+	@Column(name = "description")
 	private String description;
 
+	@ApiModelProperty(value="父级id")
 	@ManyToOne
-    @JoinColumn(name="PARENTID")
+    @JoinColumn(name="parent_id")
     private Organization parent;
 	
-	@Column(name = "TYPE")
+	@ApiModelProperty(value="类型")
+	@Column(name = "type")
 	private Integer type;
 	
+	@ApiModelProperty(value="删除标示")
+	@Column(name = "delete_status")
+	private Integer deleteStatus;
+	
+	@ApiModelProperty(value="创建时间")
+	@Column(name = "create_time")
+	private BigInteger createTime;
+	
+    @ApiModelProperty(value="租户id")
+    @Column(name = "tenant_id")
+    private BigInteger tenantId;
+	
 	@OneToMany(fetch=FetchType.LAZY)
-    @JoinColumn(name="PARENTID")
+    @JoinColumn(name="parent_id")
     private Set<Organization> children = new HashSet<Organization>();
-
-	public String getOrganizationId() {
-		return organizationId;
-	}
-
-	public void setOrganizationId(String organizationId) {
-		this.organizationId = organizationId;
-	}
-
-	public String getOrganizationName() {
-		return organizationName;
-	}
-
-	public void setOrganizationName(String organizationName) {
-		this.organizationName = organizationName;
-	}
-
-	public Integer getOrganizationCode() {
-		return organizationCode;
-	}
-
-	public void setOrganizationCode(Integer organizationCode) {
-		this.organizationCode = organizationCode;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Organization getParent() {
-		return parent;
-	}
-
-	public void setParent(Organization parent) {
-		this.parent = parent;
-	}
-
-	public Set<Organization> getChildren() {
-		return children;
-	}
-
-	public void setChildren(Set<Organization> children) {
-		this.children = children;
-	}
-
-	public Integer getType() {
-		return type;
-	}
-
-	public void setType(Integer type) {
-		this.type = type;
-	}
 
 }

@@ -1,56 +1,36 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- * 用户-角色关系
- * @author wangyong
- *
- */
-@Table(name = "SYS_USER_ROLE")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("用户角色关系")
+@Data
+@Table(name = "sys_user_role")
 @Entity
 public class UserRole {
+	@ApiModelProperty(value="用户角色关系id")
 	@Id
-	@Column(name = "USERROLEID")
-	private String userRoleId;
+	@Column(name = "user_role_id")
+	private BigInteger userRoleId;
 
+	@ApiModelProperty(value="用户id")
 	@OneToOne
-	@JoinColumn(name = "USERID")
+	@JoinColumn(name = "user_id")
 	private User user;
 
+	@ApiModelProperty(value="角色id")
 	@OneToOne
-	@JoinColumn(name = "ROLEID")
+	@JoinColumn(name = "role_id")
 	private Role role;
-
-	public String getUserRoleId() {
-		return userRoleId;
-	}
-
-	public void setUserRoleId(String userRoleId) {
-		this.userRoleId = userRoleId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
 
 }

@@ -1,76 +1,44 @@
 package cn.segema.cloud.system.domain;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * 子系统
- * @author wangyong
- *
- */
-@Table(name = "SYS_SYSTEM")
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+@ApiModel("子系统")
+@Data
+@Table(name = "sys_system")
 @Entity
 public class System {
+	@ApiModelProperty(value="子系统id")
 	@Id
-	@Column(name = "SYSTEMID")
-	private String systemId;
+	@Column(name = "system_id")
+	private BigInteger systemId;
 	
-	@Column(name = "SYSTEMNAME")
+	@ApiModelProperty(value="子系统名称")
+	@Column(name = "system_name")
 	private String systemName;
 	
-	@Column(name = "SYSTEMCODE")
+	@ApiModelProperty(value="子系统编码")
+	@Column(name = "system_code")
 	private String systemCode;
 	
-	@Column(name = "DESCRIPTION")
+	@ApiModelProperty(value="描述")
+	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "DELETESTATUS")
-	private Integer deletestatus;
-
-	public String getSystemId() {
-		return systemId;
-	}
-
-	public void setSystemId(String systemId) {
-		this.systemId = systemId;
-	}
-
-	public String getSystemName() {
-		return systemName;
-	}
-
-	public void setSystemName(String systemName) {
-		this.systemName = systemName;
-	}
-
-	public String getSystemCode() {
-		return systemCode;
-	}
-
-	public void setSystemCode(String systemCode) {
-		this.systemCode = systemCode;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Integer getDeletestatus() {
-		return deletestatus;
-	}
-
-	public void setDeletestatus(Integer deletestatus) {
-		this.deletestatus = deletestatus;
-	}
-
+	@ApiModelProperty(value="删除标示")
+	@Column(name = "delete_status")
+	private Integer deleteStatus;
 	
+	@ApiModelProperty(value="创建时间")
+	@Column(name = "create_time")
+	private BigInteger createTime;
 
 }
