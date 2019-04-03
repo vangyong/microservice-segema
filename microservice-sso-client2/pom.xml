@@ -6,10 +6,10 @@
 	<packaging>jar</packaging>
 
 	<parent>
-		<groupId>cn.segema.cloud</groupId>
-		<artifactId>wemall-springcloud</artifactId>
-		<version>0.0.1</version>
-	</parent>
+    <groupId>cn.segema.cloud</groupId>
+    <artifactId>springcloud1.x-microservice</artifactId>
+    <version>0.0.1</version>
+  </parent>
 
 	<dependencies>
 		<!-- 添加Eureka的依赖 -->

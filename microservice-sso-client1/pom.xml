@@ -7,7 +7,7 @@
 
 	<parent>
 		<groupId>cn.segema.cloud</groupId>
-		<artifactId>wemall-springcloud</artifactId>
+		<artifactId>springcloud1.x-microservice</artifactId>
 		<version>0.0.1</version>
 	</parent>
 
@@ -51,7 +51,7 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-security</artifactId>
