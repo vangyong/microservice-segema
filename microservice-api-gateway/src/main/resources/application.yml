@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: microservice-api-gateway
+server:
+  port: 8040
+eureka:
+  instance:
+    hostname: api-gateway
+    preferIpAddress: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+  client:
+    serviceUrl: 
+      defaultZone: http://discovery:8761/eureka/  
+zuul:
+  ignored-services: '*'                        # 需要忽视的服务(配置后将不会被路由)
+  routes:
+#    auth-server:
+#      path: /shiro/**
+#      serviceId: microservice-shiro
+#      sensitiveHeaders:
+#      strip-prefix: false
+    shiro: 
+      path: /shiro/**         
+      service-id: microservice-shiro
+    system:                                                           # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
+      path: /system/**                                                # 想要映射到的路径
+      service-id: microservice-system                                 # Eureka中的serviceId
+    system-web: 
+      path: /system-web/**         
+      service-id: microservice-system-web
+    contract:                                                         
+      path: /contract/**                                               
+      service-id: microservice-contract  
+    contract-web:                                                        
+      path: /contract-web/**                                               
+      service-id: microservice-contract-web                             
+    demo:                                                           
+      path: /demo/**                                               
+      service-id: microservice-demo   
+    demo-web:                                                           
+      path: /demo-web/**                                               
+      service-id: microservice-demo-web  
+    cms:                                                           
+      path: /cms/**                                               
+      service-id: microservice-cms   
+    cms-web:                                                           
+      path: /cms-web/**                                               
+      service-id: microservice-cms-web    
+      

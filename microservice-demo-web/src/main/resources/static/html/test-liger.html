@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="../plugins/ligerui-1.3.3/skins/Aqua/css/ligerui-all.css"  /> 
+  <link rel="stylesheet" href="../plugins/ligerui-1.3.3/skins/Gray/css/all.css"  /> 
+  
+  <!-- 先引入 jquery -->
+ <script type="text/javascript" src="../plugins/jquery-1.11.0/jquery-1.11.0.min.js"></script>
+ <!-- <script type="text/javascript" src="../plugins/jquery-1.9.0/jquery-1.9.0.min.js"></script> -->
+ <!-- 引入liger组件库 -->
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/core/base.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerForm.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerDateEditor.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerComboBox.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerCheckBox.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerButton.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerDialog.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerRadio.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerSpinner.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerTextBox.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerTip.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerGrid.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerFilter.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/js/plugins/ligerTree.js"></script>
+ 
+ <script type="text/javascript" src="../plugins/jquery-validation/jquery.validate.min.js"></script>
+ <script type="text/javascript" src="../plugins/jquery-validation/jquery.metadata.js"></script>
+ <script type="text/javascript" src="../plugins/jquery-validation/messages_cn.js"></script>
+ <script type="text/javascript" src="../plugins/ligerui-1.3.3/data/CustomersData.js"></script>
+ 
+ 
+ <script type="text/javascript">
+     var eee;
+     
+     function getGridOptions(checkbox)
+     {
+         var options = {
+             columns: [
+             { display: '顾客', name: 'CustomerID', align: 'left', width: 100, minWidth: 60 },
+             { display: '公司名', name: 'CompanyName', minWidth: 120, width: 100 },
+             { display: '联系名', name: 'ContactName', minWidth: 140, width: 100 },
+             { display: '电话', name: 'Phone', width: 100 },
+             { display: '城市', name: 'City', width: 100 },
+             { display: '国家', name: 'Country', width: 100 }
+             ], switchPageSizeApplyComboBox: false,
+             data: $.extend({}, CustomersData),
+             //url : 'xxx',
+             pageSize: 10, 
+             checkbox: checkbox
+         };
+         return options;
+     }
+     var condition = { fields: [{ name: 'CompanyName', label: '客户',width:90,type:'text' }] };
+     
+     $(function () {
+          $.metadata.setType("attr", "validate");
+         /* var v = $("form").validate({
+             //调试状态，不会提交数据的
+             debug: false,
+             errorLabelContainer: "#errorLabelContainer", wrapper: "li",
+             invalidHandler: function (form, validator) {
+                 $("#errorLabelContainer").show();
+                 setTimeout(function () {
+                     $.ligerDialog.tip({ content: $("#errorLabelContainer").html() });
+                 }, 10);
+             },
+             submitHandler: function () {
+                 $("#errorLabelContainer").hide();
+                // alert("Submitted!");
+                 $("form").submit();
+             }
+         }); */
+         $("form").ligerForm();
+         $(".l-button-test").click(function () {
+             alert(v.element($("#txtName")));
+         }); 
+         
+         $("#txt1").ligerComboBox({
+             width: 250,
+             slide: false,
+             selectBoxWidth: 500,
+             selectBoxHeight: 240,
+             valueField: 'CustomerID',
+             textField: 'CompanyName',
+             grid: getGridOptions(true),
+             condition: { fields: [{ name: 'CompanyName', label: '客户', width: 90, type: 'text' }] }
+         });
+         
+         var combo2 = $("#txt2").ligerComboBox({
+             width : 180, 
+             selectBoxWidth: 200,
+             selectBoxHeight: 300, valueField: 'id', treeLeafOnly: false,
+             tree: { url: '../plugins/ligerui-1.3.3/data/tree2.json', ajaxType: 'get',idFieldName:'text' }
+         }); 
+         
+     });  
+ </script>
+ 
+ <style type="text/css">
+    body{ font-size:12px;}
+    .l-table-edit {}
+    .l-table-edit-td{ padding:4px;}
+    .l-button-submit,.l-button-test{width:80px; float:left; margin-left:10px; padding-bottom:2px;}
+    .l-verify-tip{ left:230px; top:120px;}
+    #errorLabelContainer{ padding:10px; width:300px; border:1px solid #FF4466; display:none; background:#FFEEEE; color:Red;}
+</style>
+</head>
+<body>
+<h2>liger-ui 测试</h2>
+
+<form name="form1" method="post"  id="form1" action="/demo/test/add">
+	<div id="errorLabelContainer">
+	</div>
+        <table cellpadding="0" cellspacing="0" class="l-table-edit" >
+            <tr>
+                <td align="right" class="l-table-edit-td">名字:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                <input name="txtName" type="text" id="txtName" ltype="text" validate="{required:true,minlength:3,maxlength:10}" /></td>
+                <td align="left"></td>
+            </tr>
+           
+            <tr>
+                <td align="right" class="l-table-edit-td" valign="top">性别:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                    <input id="rbtnl_0" type="radio" name="rbtnl" value="1" checked="checked" />
+                    <label for="rbtnl_0">男</label> 
+                    <input id="rbtnl_1" type="radio" name="rbtnl" value="2" />
+                    <label for="rbtnl_1">女</label>
+                </td><td align="left"></td>
+            </tr>   
+             <tr>
+                <td align="right" class="l-table-edit-td">Email:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                <input name="txtEmail" type="text" id="txtEmail" ltype="text" validate="{required:true,email:true}" /></td>
+                <td align="left"></td>
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td" valign="top">爱好:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                     <input id="CheckBoxList1_0" type="checkbox" name="checkBoxList1$0" checked="checked" />
+                     <label for="CheckBoxList1_0">篮球</label><br /><input id="CheckBoxList1_1" type="checkbox" name="checkBoxList1$1" />
+                     <label for="CheckBoxList1_1">网球</label> <br /><input id="CheckBox1" type="checkbox" name="checkBoxList1$1" />
+                     <label for="CheckBoxList1_1">足球</label>      
+                </td><td align="left"></td>
+            </tr>  
+                 
+            <tr>
+                <td align="right" class="l-table-edit-td">入职日期:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                    <input name="txtDate" type="text" id="txtDate" ltype="date" validate="{required:true}" />
+                </td><td align="left"></td>
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td">年龄:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                    <input name="txtAge" type="text" id="txtAge" ltype='spinner' ligerui="{type:'int'}" value="20" class="required" validate="{digits:true,min:1,max:100}" />
+                </td><td align="left"></td>
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td">部门:</td>
+                <td align="left" class="l-table-edit-td" style="width:180px">
+                <select name="ddlDepart" id="ddlDepart" ltype="select">
+					<option value="1">主席</option>
+					<option value="2">研发中心</option>
+					<option value="3">销售部</option>
+					<option value="4">市场部</option>
+					<option value="5">顾问组</option>
+				</select>
+                </td><td align="left"></td>
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td">地址:</td>
+                <td align="left" class="l-table-edit-td" colspan="2"> 
+                <textarea cols="100" rows="4" class="l-textarea" id="address" name="address" style="width:400px" validate="{required:true}" ></textarea>
+                </td> 
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td">复选框输入:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                    <input type="text" id="txt1" name="txt1" />
+                </td><td align="left"></td>
+            </tr>
+            <tr>
+                <td align="right" class="l-table-edit-td">树下拉:</td>
+                <td align="left" class="l-table-edit-td" style="width:160px">
+                    <input type="text" id="txt2" name="txt2" />
+                </td><td align="left"></td>
+            </tr>
+            
+            
+        </table>
+		<br/>
+		<input type="submit" value="提交" id="Button1" class="l-button l-button-submit" /> 
+		<input type="button" value="测试" class="l-button l-button-test"/>
+    </form>
+</body>
+</html>
