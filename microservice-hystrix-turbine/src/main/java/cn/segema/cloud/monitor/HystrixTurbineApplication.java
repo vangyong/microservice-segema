@@ -1,4 +1,4 @@
-package cn.segema.cloud.hystrix.turbine;
+package cn.segema.cloud.monitor;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
